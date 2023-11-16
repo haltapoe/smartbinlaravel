@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -15,8 +16,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('auth.dashboard');
+    return view('auth.login');
 });
+
+Auth::routes();
+
+Route::get('/home', [Login::class, 'index'])->name('home');
 
 Auth::routes();
 

@@ -33,12 +33,12 @@
         <li class="nav-item">
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
-        <!-- <li class="nav-item d-none d-sm-inline-block">
+        <li class="nav-item d-none d-sm-inline-block">
           <a href="index3.html" class="nav-link">Home</a>
-        </li> -->
-        <!-- <li class="nav-item d-none d-sm-inline-block">
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
           <a href="#" class="nav-link">Contact</a>
-        </li> -->
+        </li>
       </ul>
 
       <!-- Right navbar links -->
@@ -221,16 +221,6 @@
                 </li>
               </ul>
             </li>
-            <li class="nav-item mt-3">
-                  <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                    {{ __('Logout') }}
-                  </a>
-                  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                    @csrf
-                  </form>
-                  </a>
-                </li>
             <!--<li class="nav-item">
             <a href="pages/widgets.html" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
@@ -834,7 +824,6 @@
             </a>
           </li>-->
           </ul>
-
         </nav>
         <!-- /.sidebar-menu -->
       </div>
