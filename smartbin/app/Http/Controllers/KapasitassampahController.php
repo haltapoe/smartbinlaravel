@@ -2,16 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Http\Request;
+use App\Models\Kapasitassampah;
 use Illuminate\Http\Request;
 
 class KapasitassampahController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+
     public function getCentimeterData()
     {
-        //mengunakan model
-        $centimeterData = Kapasitassampah::getCentimeterData();
-        //mengembalikan data dala json
-        return response()->json(['centimeterData' => $centimeterData]);
+        return view('get-centimeter-data');
     }
 }

@@ -27,7 +27,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [Login::class, 'index'])->name('home');
-Route::get('/home', [HomeController::class, 'index']);
-Route::get('/get-lokasi', [LokasiController::class, 'getLokasi']);
-Route::get('/get-rute', [RuteController::class, 'getRute']);
-Route::get('/get-centimeter-data', [KapasitassampahController::class, 'getCentimeterData']);
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/get-lokasi', [LokasiController::class, 'getLokasi'])->name('get-lokasi');
+Route::get('/get-rute', [RuteController::class, 'getSmartbinData'])->name('get-rute');
+Route::get('/get-centimeter-data', [KapasitassampahController::class, 'getCentimeterData'])->name('get-centimeter-data');

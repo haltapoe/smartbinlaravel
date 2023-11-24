@@ -12,6 +12,6 @@ class Rute extends Model
 
     public static function getRute()
     {
-        return DB::connection('pgsql')->table('smartbin')->select('lat', 'long', 'kilometer')->get()
+        return DB::connection('pgsql')->table('smartbin')->select('lat', 'long', 'kilometer')->get();
     }
 }
