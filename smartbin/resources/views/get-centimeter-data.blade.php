@@ -1,3 +1,5 @@
+@extends('layouts.app')
+@section('content')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,14 +28,14 @@
   * sidebar-collapse
   * sidebar-mini
 -->
-<body class="hold-transition sidebar-mini">
-<div class="wrapper">
+<body class="hold-transition sidebar-mini layout-fixed dark-mode" data-panel-auto-height-mode="height">
+  <div class="wrapper">
     <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">
     <img class="animation__shake" src="icon-smartbin.png" alt="SmartBin Logo" height="60" width="60">
   </div>
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+  <nav class="main-header navbar navbar-expand navbar-dark">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -223,3 +225,4 @@
 <script src="dist/js/pages/dashboard3.js"></script>
 </body>
 </html>
+@endsection
