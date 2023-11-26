@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Dashboard 2</title>
+  <title>SmartBin | Rute</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -37,7 +37,7 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="{{ route('home') }}" class="nav-link">Home</a>
+          <a href="{{ route('home') }}" class="nav-link">Beranda</a>
         </li>
       </ul>
 
@@ -94,7 +94,7 @@
               <a href="#" class="nav-link active">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
-                  Dashboard
+                  Daftar Menu
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
@@ -119,7 +119,7 @@
                 </li>
               </ul>
             </li>
-
+          </ul>
         </nav>
         <!-- /.sidebar-menu -->
       </div>
@@ -143,7 +143,16 @@
       });
       osm.addTo(map);
 
-      var singleMarker = L.marker([-6.235279747898276, 106.8208198373647]);
+      var redMarkerIcon = L.icon({
+        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+      });
+
+      var singleMarker = L.marker([-6.235279747898276, 106.8208198373647], { icon: redMarkerIcon });
       singleMarker.addTo(map);
       var popup = singleMarker.bindPopup('pln icon plus');
       popup.addTo(map);
