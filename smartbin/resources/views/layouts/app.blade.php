@@ -40,11 +40,10 @@
                         <!-- Authentication Links -->
 
                         @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}"><button type="submit" class="btn btn-primary" href="{{ route('register') }}">
+                        <li class="nav-item"href="{{ route('register') }}"><button type="submit" class="btn btn-primary" href="{{ route('register') }}">
                                     {{ __('Register') }}
                                 </button>
-                            </a>
+                            
                         </li>
                         @endif
                         @endguest
@@ -52,7 +51,7 @@
                 </div>
             </div>
         </nav>
-        <main class="" style="height: 650px; background-image: url('{{ asset('background_smartbin.jpg') }}'); background-size: cover;">
+        <main class="" style="height: 648px; background-image: url('{{ asset('background_smartbin.jpg') }}'); background-size: cover;">
             @yield('content')
         </main>
     </div>
