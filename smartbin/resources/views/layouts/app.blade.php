@@ -34,16 +34,16 @@
                 @endif
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    
+
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
 
                         @if (Route::has('register'))
-                        <li class="nav-item"href="{{ route('register') }}"><button type="submit" class="btn btn-primary" href="{{ route('register') }}">
-                                    {{ __('Register') }}
-                                </button>
-                            
+                        <li class="nav-item">
+                            <a href="{{ route('register') }}" class="btn btn-primary">
+                                {{ __('Register') }}
+                            </a>
                         </li>
                         @endif
                         @endguest
