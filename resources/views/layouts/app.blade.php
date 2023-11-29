@@ -39,9 +39,9 @@
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
 
-                        @if (Route::has('register'))
+                        @if (Route::has('register') && !Route::is('register'))
                         <li class="nav-item">
-                            <a href="{{ route('register') }}" class="btn btn-primary">
+                            <a href="{{ route('register') }}" class="btn btn-success">
                                 {{ __('Register') }}
                             </a>
                         </li>
