@@ -126,17 +126,18 @@
         height: 100vh;
         width: 100%;
       }
+
       .leaflet-routing-container {
-      color: black !important;
-    }
-    
+        color: black !important;
+        background-color: white !important;
+      }
     </style>
     <div id="map"></div>
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
     <script src="https://unpkg.com/leaflet-routing-machine@3.3.4/dist/leaflet-routing-machine.css"></script>
     <script>
-      var map = L.map('map').setView([-6.235279747898276, 106.8208198373647], 13);
+      var map = L.map('map').setView([-6.235279747898276, 106.8208198373647], 16);
 
       var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -195,7 +196,6 @@
         var marker = L.marker(coordinates[i], {
           icon: redMarkerIcon
         }).bindPopup('Titik ' + (i + 1));
-        markers.push(marker);
         marker.addTo(map);
       }
 
