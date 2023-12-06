@@ -46,7 +46,7 @@
       <ul class="navbar-nav ml-auto">
         <!-- navbar logout -->
         <li class="nav-item">
-          <a class="btn btn-dark" href="{{ route('logout') }}" onclick="event.preventDefault();
+          <a class="btn btn-danger" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAABeklEQVR4nO2ZS0oDQRBAx4WCuosrjQfQoyQIEVFc6AVEd4KXiAcRl/EMQhD1BH5w4gfRlZ/VCE8aWmzHWYShqrVJvQNU1Zuurm56sswwDONfA0wAO0AfeEOGd+AU2AOmNYufA87R5RJY1Pry2sV/kQMz0gKubWKyLy3gej6k51pKKHYTOCjFv5OIHSZ5LSVoCsefBB6C+HkmnOAHosG/c7SBAXANtJITUMUERmUFgDXg2U0hYDm1TTwGPAVpCmA9tRV4LKWSkYgosOKLlpWIOYWA1QqJD2AzmXMAaYlhBPxJ6k5RTYpa02lIgVviMNAScPeYGORaAi3gKtkWUjiRi4pNvFE3YDQBpIuPKQB0kj7I+D0IkrtK3IsX/wctlPtp1pEMHG0Tq2ACo7ACwJLfxO5C2JYO/pL6w1a/JHAkJQHMA4faT4vbxKWr8bx+Fqn4G6AhKuAlZv2fFE0ugAXx4gOJcWALOK54sa6L+1V1AuwCU2rFG4ZhZNp8AgP1WnQOYyj4AAAAAElFTkSuQmCC" width="20px"></img>
             {{ __('Logout') }}
           </a>
@@ -193,9 +193,7 @@
 
       var markers = [];
       for (var i = 0; i < coordinates.length; i++) {
-        var marker = L.marker(coordinates[i], {
-          icon: redMarkerIcon
-        }).bindPopup('Titik ' + (i + 1));
+        var marker = L.marker(coordinates[i], {icon: redMarkerIcon, draggable: false}).bindPopup('Titik ' + (i + 1));
         marker.addTo(map);
       }
 
@@ -237,7 +235,7 @@
           L.latLng(-6.242972, 106.882361),
           L.latLng(-6.242972, 106.881917)
         ],
-        routeWhileDragging: true
+        routeWhileDragging: false
       }).addTo(map);
 
       var OpenStreetMap_BZH = L.tileLayer('https://tile.openstreetmap.bzh/br/{z}/{x}/{y}.png', {
