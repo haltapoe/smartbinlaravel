@@ -138,27 +138,87 @@
     <div id="map"></div>
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
     <script>
-      var map = L.map('map').setView([-6.235279747898276, 106.8208198373647], 13);
+      var map = L.map('map').setView([-6.244528, 106.832361], 13);
 
       var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       });
       osm.addTo(map);
 
-      var redMarkerIcon = L.icon({
-        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+      var GreenBatteryIcon = L.icon({
+        iconUrl: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA8ElEQVR4nO2ZwQ2CQBBFOdkFfM6QYA0cMNFE9kRLilZBC9QwtbBtrFkTvRgEnGzA5L/kn3dm9t1+FBGyDdI0NQAsADcRG8dxHW0NAPbYla6R09ecutIvMawyZJZlOwC3sUtPDf/K2M8AaP0bwRYAcN+b3Jm+mj3s3Ji+ckWduyRJriEXsCGGb95LHMLqtUSTXwPAcYEx+ANChXRQIaFCOqiQUCEdVEiokA4qJFRIBxUSKqSDCgkV0kGFhArpoEJChXRQIaFCOqiQrK+Q/feKqfVFnH8oxPDF+VnyXULXrK2/0oxCe2kG31AGrVkJiT54AMn0Tydk96NBAAAAAElFTkSuQmCC',
         shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
-        iconSize: [25, 41],
+        iconSize: [30, 35],
         iconAnchor: [12, 41],
         popupAnchor: [1, -34],
         shadowSize: [41, 41]
       });
 
-      var singleMarker = L.marker([-6.235279747898276, 106.8208198373647],{ icon: redMarkerIcon } )
+      var YellowBatteryIcon = L.icon({
+        iconUrl: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA7ElEQVR4nO2ZMQ6CQBREqaxF7QgMNYfREwieRtGzafQMJu4lKMasiTYGAX82aDIvmXr///u6iSIhfoM8z1cAHAB2xKVpuox+DQDudJmz4fRjjueFX+I2ypBFUUwA7Nsu3TX8M20/A6D2bwRbAMCh2iS8urj3sH1zdTHLKmGWZbuQC7gQwzevJWZh9RqiybcBQC3Qhn6AUsiGFKIUsiGFKIVsSCFKIRtSiFLIhhSiFLIhhSiFbEghSiEbUohSyIYUohSyIYU4vkLu3yum2hdx/qEQw6/LR8m3DV2z1v5KPQrtobn5hjJozSpE9MYd75mwIp5lCvsAAAAASUVORK5CYII=',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+        iconSize: [30, 35],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+      });
 
-      singleMarker.addTo(map);
-      var popup = singleMarker.bindPopup('pln icon plus');
-      popup.addTo(map);
+      var RedBatteryIcon = L.icon({
+        iconUrl: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA6ElEQVR4nO2ZMQ6CQBBFt7KeBToCn5rD6A3U0yh6Ob0Ee40xG0NlEHCyAZP/kl/vzOzrvnOEbIOmaQ4AAgCdSKiqau+2BoDwzHNVka95FEVcol9lyLZtdwBuY5eeGn7I2M8A6OIbyRYAcD+XpQbvZw87N8F7PZWl1nV9TblASDG8DktkWVq9lmjyawAoFxiDPyBUyAYVEipkgwoJFbJBhYQK2aBCQoVsUCGhQjaokFAhG1RIqJANKiRUyAYVEipkgwrJ+gqFf6+YuljExYdSDH98l3yX1DVrF680o9Bemj42lElrVkLcBy96RVxBGRRIAgAAAABJRU5ErkJggg==',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+        iconSize: [30, 35],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+      });
+
+      var coordinates = [
+        [-6.244528, 106.832361],
+        [-6.245111, 106.832306],
+        [-6.245233, 106.831592],
+        [-6.245192, 106.831250],
+        [-6.245311, 106.830833],
+        [-6.245233, 106.830694],
+        [-6.244889, 106.830750],
+        [-6.244500, 106.830917],
+        [-6.244417, 106.830917],
+        [-6.244306, 106.830944],
+        [-6.244306, 106.830833],
+        [-6.243806, 106.830750],
+        [-6.243750, 106.830806],
+        [-6.243667, 106.830750],
+        [-6.243389, 106.830694],
+        [-6.243333, 106.830750],
+        [-6.243194, 106.830694],
+        [-6.242972, 106.830583],
+        [-6.242972, 106.830750],
+        [-6.242972, 106.830917],
+        [-6.242972, 106.831639],
+        [-6.242972, 106.831694],
+        [-6.242972, 106.831889],
+        [-6.242972, 106.832194],
+        [-6.242972, 106.832528],
+        [-6.242972, 106.882333],
+        [-6.242972, 106.882778],
+        [-6.242972, 106.882639],
+        [-6.242972, 106.882917],
+        [-6.242972, 106.882222],
+        [-6.242972, 106.882667],
+        [-6.242972, 106.882250],
+        [-6.242972, 106.882222],
+        [-6.242972, 106.882361],
+        [-6.242972, 106.881917]
+      ];
+
+      var markers = [];
+      for (var i = 0; i < coordinates.length; i++) {
+        var icon = i % 3 === 0 ? RedBatteryIcon : i % 3 === 1 ? YellowBatteryIcon : GreenBatteryIcon;
+        var marker = L.marker(coordinates[i], {
+          icon: icon,
+          draggable: true
+        }).bindPopup('mark ' + (i + 1));
+        marker.addTo(map);
+      }
 
       var OpenStreetMap_BZH = L.tileLayer('https://tile.openstreetmap.bzh/br/{z}/{x}/{y}.png', {
         maxZoom: 19,
@@ -189,7 +249,7 @@
       };
 
       var overlays = {
-        "Marker": singleMarker,
+        "Marker": markers,
       };
 
       L.control.layers(baseLayers, overlays).addTo(map);

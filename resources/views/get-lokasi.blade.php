@@ -142,7 +142,7 @@
     <div id="map"></div>
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
     <script>
-      var map = L.map('map').setView([-6.235279747898276, 106.8208198373647], 13);
+      var map = L.map('map').setView([-6.244528, 106.832361], 13);
 
       var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -158,10 +158,51 @@
         shadowSize: [41, 41]
       });
 
-      var singleMarker = L.marker([-6.235279747898276, 106.8208198373647], { icon: redMarkerIcon });
-      singleMarker.addTo(map);
-      var popup = singleMarker.bindPopup('pln icon plus');
-      popup.addTo(map);
+      var coordinates = [
+        [-6.244528, 106.832361],
+        [-6.245111, 106.832306],
+        [-6.245233, 106.831592],
+        [-6.245192, 106.831250],
+        [-6.245311, 106.830833],
+        [-6.245233, 106.830694],
+        [-6.244889, 106.830750],
+        [-6.244500, 106.830917],
+        [-6.244417, 106.830917],
+        [-6.244306, 106.830944],
+        [-6.244306, 106.830833],
+        [-6.243806, 106.830750],
+        [-6.243750, 106.830806],
+        [-6.243667, 106.830750],
+        [-6.243389, 106.830694],
+        [-6.243333, 106.830750],
+        [-6.243194, 106.830694],
+        [-6.242972, 106.830583],
+        [-6.242972, 106.830750],
+        [-6.242972, 106.830917],
+        [-6.242972, 106.831639],
+        [-6.242972, 106.831694],
+        [-6.242972, 106.831889],
+        [-6.242972, 106.832194],
+        [-6.242972, 106.832528],
+        [-6.242972, 106.882333],
+        [-6.242972, 106.882778],
+        [-6.242972, 106.882639],
+        [-6.242972, 106.882917],
+        [-6.242972, 106.882222],
+        [-6.242972, 106.882667],
+        [-6.242972, 106.882250],
+        [-6.242972, 106.882222],
+        [-6.242972, 106.882361],
+        [-6.242972, 106.881917]
+      ];
+
+      var markers = [];
+      for (var i = 0; i < coordinates.length; i++) {
+        var marker = L.marker(coordinates[i], {
+          icon: redMarkerIcon
+        }).bindPopup('Titik ' + (i + 1));
+        marker.addTo(map);
+      }
 
       var OpenStreetMap_BZH = L.tileLayer('https://tile.openstreetmap.bzh/br/{z}/{x}/{y}.png', {
         maxZoom: 19,
@@ -192,7 +233,7 @@
       };
 
       var overlays = {
-        "Marker": singleMarker,
+        "Marker": markers,
       };
 
       L.control.layers(baseLayers, overlays).addTo(map);
