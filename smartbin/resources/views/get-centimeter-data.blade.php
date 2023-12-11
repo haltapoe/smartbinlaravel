@@ -19,7 +19,7 @@
   <!-- map leaflet -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.3.4/dist/leaflet-routing-machine.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.3.4/dist/leaflet-routing-machine.css" />
 
 </head>
 <!--
@@ -146,8 +146,26 @@
       });
       osm.addTo(map);
 
-      var redMarkerIcon = L.icon({
+      var GreenBatteryIcon = L.icon({
         iconUrl: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA8ElEQVR4nO2ZwQ2CQBBFOdkFfM6QYA0cMNFE9kRLilZBC9QwtbBtrFkTvRgEnGzA5L/kn3dm9t1+FBGyDdI0NQAsADcRG8dxHW0NAPbYla6R09ecutIvMawyZJZlOwC3sUtPDf/K2M8AaP0bwRYAcN+b3Jm+mj3s3Ji+ckWduyRJriEXsCGGb95LHMLqtUSTXwPAcYEx+ANChXRQIaFCOqiQUCEdVEiokA4qJFRIBxUSKqSDCgkV0kGFhArpoEJChXRQIaFCOqiQrK+Q/feKqfVFnH8oxPDF+VnyXULXrK2/0oxCe2kG31AGrVkJiT54AMn0Tydk96NBAAAAAElFTkSuQmCC',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+        iconSize: [30, 35],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+      });
+
+      var YellowBatteryIcon = L.icon({
+        iconUrl: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA7ElEQVR4nO2ZMQ6CQBREqaxF7QgMNYfREwieRtGzafQMJu4lKMasiTYGAX82aDIvmXr///u6iSIhfoM8z1cAHAB2xKVpuox+DQDudJmz4fRjjueFX+I2ypBFUUwA7Nsu3TX8M20/A6D2bwRbAMCh2iS8urj3sH1zdTHLKmGWZbuQC7gQwzevJWZh9RqiybcBQC3Qhn6AUsiGFKIUsiGFKIVsSCFKIRtSiFLIhhSiFLIhhSiFbEghSiEbUohSyIYUohSyIYU4vkLu3yum2hdx/qEQw6/LR8m3DV2z1v5KPQrtobn5hjJozSpE9MYd75mwIp5lCvsAAAAASUVORK5CYII=',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+        iconSize: [30, 35],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+      });
+
+      var RedBatteryIcon = L.icon({
+        iconUrl: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA6ElEQVR4nO2ZMQ6CQBBFt7KeBToCn5rD6A3U0yh6Ob0Ee40xG0NlEHCyAZP/kl/vzOzrvnOEbIOmaQ4AAgCdSKiqau+2BoDwzHNVka95FEVcol9lyLZtdwBuY5eeGn7I2M8A6OIbyRYAcD+XpQbvZw87N8F7PZWl1nV9TblASDG8DktkWVq9lmjyawAoFxiDPyBUyAYVEipkgwoJFbJBhYQK2aBCQoVsUCGhQjaokFAhG1RIqJANKiRUyAYVEipkgwrJ+gqFf6+YuljExYdSDH98l3yX1DVrF680o9Bemj42lElrVkLcBy96RVxBGRRIAgAAAABJRU5ErkJggg==',
         shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
         iconSize: [30, 35],
         iconAnchor: [12, 41],
@@ -195,14 +213,13 @@
 
       var markers = [];
       for (var i = 0; i < coordinates.length; i++) {
-        var marker = L.marker(coordinates[i], {icon: redMarkerIcon, draggable: true}).bindPopup('mark ' + (i + 1));
+        var icon = i % 3 === 0 ? RedBatteryIcon : i % 3 === 1 ? YellowBatteryIcon : GreenBatteryIcon;
+        var marker = L.marker(coordinates[i], {
+          icon: icon,
+          draggable: true
+        }).bindPopup('mark ' + (i + 1));
         marker.addTo(map);
       }
-
-      // var singleMarker = L.marker([-6.235279747898276, 106.8208198373647], { icon: redMarkerIcon });
-      // singleMarker.addTo(map);
-      // var popup = singleMarker.bindPopup('pln icon plus');
-      // popup.addTo(map);
 
       var OpenStreetMap_BZH = L.tileLayer('https://tile.openstreetmap.bzh/br/{z}/{x}/{y}.png', {
         maxZoom: 19,
