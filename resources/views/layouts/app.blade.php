@@ -51,7 +51,7 @@
                 </div>
             </div>
         </nav>
-        <main class="" style="height: 1000px; background-image: url('{{ asset('background_smartbin.jpg') }}'); background-size: cover;">
+        <main class="" style="height: 648px; background-image: url('{{ asset('background_smartbin.jpg') }}'); background-size: cover;">
             @yield('content')
         </main>
     </div>
