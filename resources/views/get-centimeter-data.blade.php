@@ -41,7 +41,7 @@
       <!-- Left navbar links -->
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+          <a class="nav-link" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
           <a href="{{ route('home') }}" class="nav-link">Beranda</a>
@@ -76,18 +76,6 @@
       <!-- Sidebar -->
       <div class="sidebar">
 
-        <!-- SidebarSearch Form -->
-        <div class="form-inline mt-3">
-          <div class="input-group" data-widget="sidebar-search">
-            <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-            <div class="input-group-append">
-              <button class="btn btn-sidebar">
-                <i class="fas fa-search fa-fw"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-
         <!-- Sidebar Menu -->
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -104,19 +92,41 @@
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="{{ route('get-lokasi') }}" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
+                    <img width="25" height="25" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAABz0lEQVR4nO3YzYtOURzA8RPFJAtJIVlIXqJsLFBjYScWpCwslJ2XjZ2dUhaslJUUq1nZWGnKRpGysFHKRpmiyZS8phhm5qNbtzw9YZ7nnnvuPY/u9y/4fm/3nN85J4SOjo6OVGAzxsMogQ24hfd+8xHrQ65gBS7jtb/zMOQEluA0nmPB4kyFHMBBPMIPw3G37cU4gc+qs6tp6dW4hhnxvGtKehnO4cWA//Wg3EgtfgRPMC8Na1NI78UkZqVlqk7pTbjZN2RSczFWelU5ZN5onnmMxchfrXkxDsuzGPmT2udUVfndFSZl3czGfP1iobbNg5iA223b40BMwD78bFH+S2X5noj9xS7QUsCd6ICeM/txvGo4YEctAX2HtPPl1S41M7XK/+GIXAy3bwkDricL6AnZWG61czXLL2BN8oCekJ24V2PAy8bk+0IOYbqGgAutBJQR2/A1Qn6u2CxaCygjLkUEPG1VvgxYibcVA06EHMDZCvLfQy5gafkqMQz3Q07g2JAB4yE38HhA+U8hR7BnwPv0RMiV4kF2gIAtIVewdZG79XTIneJd8x8BZ0LuYF1xRewTL9bGlTAq4HDxRF7Kf8DRMGpgDNuxvG2Xjo7/iV8o958YCuMy6QAAAABJRU5ErkJggg==" />
                     <p>Lokasi</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="{{ route('get-rute') }}" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Rute</p>
+                    <img width="25" height="25" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAACxUlEQVR4nO2Yu49NQRzHZ7FIECFeHSJLIYhC9rrWo1LQildCFB6F6GhWxKNQYCMi/gBEsSHRUCGLpZFNUCg8glVZiY2VEGL5yMjv2FnnfWfOnXvjfLsz8zu/7/nM+c3jHKVKlSpVqtT/JKAF6CG7elUjClhJPt1XjSjgrDzgGdXkZdUvIO2qWQVUBeKdhlLNKoooK+Ah/lRxCeJL/UFZpQxmT6byw5/+lpWTN0dYVevXPDr/qrSHCxpU+N4u6eqqBaTDMcjqpLJKAalExWcFqYdGrVYJIC3A20zl5QmkPQtIrvLyABEqEwc5H+RJUnU00UMj6wCEPEk6HE30im8QF4o8W7lIrIBb1E+RE9ZFYiWJ5gGbgdPAXeAzDXi2In5zJe6GscBiYBdwAXgEfLeESN/UUqTnaS6QmCTjBG4ncA7oA37m3QSBLZYDYg0yJqJtCrAOOARcNXbh2LKSOK8gQ3KkPgVsAubGxM0CNgLHgJvAB+COHDcmA198g0RpALgBHAU2ADNTcug3V4hUBoBW4ESOnG+AbuAgsBaYqgHl+ocXEGCi/p8kscPANWA/sB04DDx2/DzDtXqkgVyWuFfAkoh+Xff7HCzN1h4qAWKFxAwC81OAtZGNrD1Uwo2XJKbTaFsjr3pIltEZxqg9sQCx9lAJIM8kZqFcT5eRM9VtxB+xALH2UAkgXyVmglyvj7h/0IjfYQFi69GbBKI3Mq3Zct0G/PonQZ8Rf0DazscmDXsMFO2hZDfW2ma0HTeMPurTqNF3Xdp3N5KHMlaJp8B4o71NSmCa0bZc9oBvweTM6LGnaA+lEwMvxUjvJ60xcQuA1xJ3MrPBiMfzIj3+CFhmfGTppW8rMEceYJGsIp+k/14wafMIWCpLbWEeJswLknUFmFSTwQhMoR6BkR6dvcBt4L0cF/S3x0X9p8QqeR09SpUqpZpfvwEgyUkisbZ/cwAAAABJRU5ErkJggg==" />
+                    <p>Rute
+                    <i class="right fas fa-angle-left"></i>
+                    </p>
                   </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item ml-3">
+                      <a href="{{ route('get-rute') }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Nama Rute</p>
+                      </a>
+                    </li>
+                    <li class="nav-item ml-3">
+                      <a href="{{ route('get-rute') }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Smartbin Visit</p>
+                      </a>
+                    </li>
+                    <li class="nav-item ml-3">
+                      <a href="{{ route('get-rute') }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Jadwal</p>
+                      </a>
+                    </li>
+                  </ul>
                 </li>
                 <li class="nav-item">
                   <a href="{{ route('get-centimeter-data') }}" class="nav-link active">
-                    <i class="far fa-circle nav-icon"></i>
+                    <img width="25" height="25" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAABy0lEQVR4nM3ZvyuFURwG8JdikWKg5A+gpCSWy01JYWdgkJKJgYFBJoZLMjDekpKSiUFKSvJbDAwyMRBuYr9F99HpHnWHy33vvef7fN9nPJ33POfznuGt93ieowAoBjAP4BWZ8wJgzjzjBS1IbizbRLygBcm3bBLyMbf192S8oAU2UvNpCTQEwCmCk5N8IMcITo5cnMyjIuAhb0AK5FwRcuYSsq0I2XIJifooDKV8H/yOt/hYN+oSMpupLWVuXuNpMuMSMgo9yIhLSK8ipMclpE0REnYJqVWE1LiElCtCylxCCgDEFSBx0+0MYgufFSBPThG28FoBciUB2VWA7EhAVhUgK/SfC0KQiARkXAEyJgHpV4D0SUA6FCDtEpB6BUidBKRSAVIhASkE8EWEfJtO5xBbGiNC3kQQtvSWCLmRhOwTIXuSkHUiZE0SskiELEhCJomQCUnIIBEyIAnpJkI6JSGNREiDJKSaCKmShBQBSBAgCdMlBrHFnwTIhyjCFt8TIHcMyCEBcsCAbBIgGwzI8h/l5vYpnOV4upsskyUGZBrymWJAhgmQIQakiwDpZEBKAbwLImIASsQhFtMM4PK/nxE5xKx1AaApl039ADHK3/YJmOgMAAAAAElFTkSuQmCC" />
                     <p>Kapasitas Sampah</p>
                   </a>
                 </li>
@@ -134,8 +144,47 @@
         height: 92vh;
         width: 100%;
       }
+      .legend {
+          background-color: #343a40;
+          padding: 10px;
+          border-radius: 5px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          position: absolute;
+          bottom: 20px;
+          right: 20px;
+          z-index: 1000;
+        }
+
+        .legend-item {
+          display: flex;
+          align-items: center;
+          margin-bottom: 5px;
+        }
+
+        .legend-icon {
+          width: 20px;
+          height: 20px;
+          margin-right: 8px;
+        }
     </style>
     <div id="map"></div>
+    
+    <!-- Legenda -->
+    <div class="legend">
+        <div class="legend-item">
+            <img class="legend-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA8ElEQVR4nO2ZwQ2CQBBFOdkFfM6QYA0cMNFE9kRLilZBC9QwtbBtrFkTvRgEnGzA5L/kn3dm9t1+FBGyDdI0NQAsADcRG8dxHW0NAPbYla6R09ecutIvMawyZJZlOwC3sUtPDf/K2M8AaP0bwRYAcN+b3Jm+mj3s3Ji+ckWduyRJriEXsCGGb95LHMLqtUSTXwPAcYEx+ANChXRQIaFCOqiQUCEdVEiokA4qJFRIBxUSKqSDCgkV0kGFhArpoEJChXRQIaFCOqiQrK+Q/feKqfVFnH8oxPDF+VnyXULXrK2/0oxCe2kG31AGrVkJiT54AMn0Tydk96NBAAAAAElFTkSuQmCC">
+            Sampah Kosong
+        </div>
+        <div class="legend-item">
+            <img class="legend-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA7ElEQVR4nO2ZMQ6CQBREqaxF7QgMNYfREwieRtGzafQMJu4lKMasiTYGAX82aDIvmXr///u6iSIhfoM8z1cAHAB2xKVpuox+DQDudJmz4fRjjueFX+I2ypBFUUwA7Nsu3TX8M20/A6D2bwRbAMCh2iS8urj3sH1zdTHLKmGWZbuQC7gQwzevJWZh9RqiybcBQC3Qhn6AUsiGFKIUsiGFKIVsSCFKIRtSiFLIhhSiFLIhhSiFbEghSiEbUohSyIYUohSyIYU4vkLu3yum2hdx/qEQw6/LR8m3DV2z1v5KPQrtobn5hjJozSpE9MYd75mwIp5lCvsAAAAASUVORK5CYII=">
+            Sampah Setengah
+        </div>
+        <div class="legend-item">
+            <img class="legend-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA6ElEQVR4nO2ZMQ6CQBBFt7KeBToCn5rD6A3U0yh6Ob0Ee40xG0NlEHCyAZP/kl/vzOzrvnOEbIOmaQ4AAgCdSKiqau+2BoDwzHNVka95FEVcol9lyLZtdwBuY5eeGn7I2M8A6OIbyRYAcD+XpQbvZw87N8F7PZWl1nV9TblASDG8DktkWVq9lmjyawAoFxiDPyBUyAYVEipkgwoJFbJBhYQK2aBCQoVsUCGhQjaokFAhG1RIqJANKiRUyAYVEipkgwrJ+gqFf6+YuljExYdSDH98l3yX1DVrF680o9Bemj42lElrVkLcBy96RVxBGRRIAgAAAABJRU5ErkJggg==">
+            Sampah Penuh
+        </div>
+    </div>
+
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
     <script>
       var map = L.map('map').setView([-6.244528, 106.832361], 13);
