@@ -155,11 +155,14 @@
             left: auto;
             bottom: 20px;
             z-index: 1000;
+            display: flex;
+            flex-direction: row;
           }
 
           .legend-item {
             display: flex;
             align-items: center;
+            margin-right: 15px;
             margin-bottom: 5px;
           }
 
@@ -172,17 +175,25 @@
 
         <!-- Map Peta -->
         <div id="map">
-          <!-- Legenda Kapasitas 100L-->
-          <div class="legend">
-            <div class="legend-item">
-              <img class="legend-icon" src="https://img.icons8.com/plasticine/100/filled-trash.png">
-              Kapasitas 100L
-            </div>
+          
+          <!-- Legenda -->
+        <div class="legend">
+          <div class="legend-item">
+            <i class="fas fa-circle nav-icon mr-2 text-danger"></i>
+            Penuh
+          </div>
+          <div class="legend-item">
+            <i class="fas fa-circle nav-icon mr-2 text-warning"></i>
+            Setengah
+          </div>
+          <div class="legend-item">
+          <i class="fas fa-circle nav-icon mr-2 text-success"></i>
+            Kosong
+          </div>
           </div>
 
           <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
           <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
-          <script src="https://unpkg.com/leaflet-routing-machine@3.3.4/dist/leaflet-routing-machine.css"></script>
           <script>
             var map = L.map('map').setView([-6.244528, 106.832361], 16);
             var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -329,15 +340,6 @@
             <div class="card">
               <div class="card-header border-transparent">
                 <h3 class="card-title">Latest Orders</h3>
-
-                <!-- <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                  <i class="fas fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-tool" data-card-widget="remove">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div> -->
               </div>
               <!-- /.card-header -->
               <div class="card-body p-0">
