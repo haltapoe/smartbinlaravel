@@ -34,7 +34,7 @@
       <!-- Left navbar links -->
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="#" role="button"><i class="fas fa-bars"></i></a>
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
           <a href="{{ route('home') }}" class="nav-link">Beranda</a>
@@ -87,28 +87,28 @@
                     <p>Lokasi</p>
                   </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item menu-open">
                   <a href="{{ route('get-rute') }}" class="nav-link active">
                     <img width="25" height="25" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAACxUlEQVR4nO2Yu49NQRzHZ7FIECFeHSJLIYhC9rrWo1LQildCFB6F6GhWxKNQYCMi/gBEsSHRUCGLpZFNUCg8glVZiY2VEGL5yMjv2FnnfWfOnXvjfLsz8zu/7/nM+c3jHKVKlSpVqtT/JKAF6CG7elUjClhJPt1XjSjgrDzgGdXkZdUvIO2qWQVUBeKdhlLNKoooK+Ah/lRxCeJL/UFZpQxmT6byw5/+lpWTN0dYVevXPDr/qrSHCxpU+N4u6eqqBaTDMcjqpLJKAalExWcFqYdGrVYJIC3A20zl5QmkPQtIrvLyABEqEwc5H+RJUnU00UMj6wCEPEk6HE30im8QF4o8W7lIrIBb1E+RE9ZFYiWJ5gGbgdPAXeAzDXi2In5zJe6GscBiYBdwAXgEfLeESN/UUqTnaS6QmCTjBG4ncA7oA37m3QSBLZYDYg0yJqJtCrAOOARcNXbh2LKSOK8gQ3KkPgVsAubGxM0CNgLHgJvAB+COHDcmA198g0RpALgBHAU2ADNTcug3V4hUBoBW4ESOnG+AbuAgsBaYqgHl+ocXEGCi/p8kscPANWA/sB04DDx2/DzDtXqkgVyWuFfAkoh+Xff7HCzN1h4qAWKFxAwC81OAtZGNrD1Uwo2XJKbTaFsjr3pIltEZxqg9sQCx9lAJIM8kZqFcT5eRM9VtxB+xALH2UAkgXyVmglyvj7h/0IjfYQFi69GbBKI3Mq3Zct0G/PonQZ8Rf0DazscmDXsMFO2hZDfW2ma0HTeMPurTqNF3Xdp3N5KHMlaJp8B4o71NSmCa0bZc9oBvweTM6LGnaA+lEwMvxUjvJ60xcQuA1xJ3MrPBiMfzIj3+CFhmfGTppW8rMEceYJGsIp+k/14wafMIWCpLbWEeJswLknUFmFSTwQhMoR6BkR6dvcBt4L0cF/S3x0X9p8QqeR09SpUqpZpfvwEgyUkisbZ/cwAAAABJRU5ErkJggg=="></i>
                     <p>Rute
-                    <i class="right fas fa-angle-left"></i>
+                      <i class="right fas fa-angle-left"></i>
                     </p>
                   </a>
                   <ul class="nav nav-treeview">
-                    <li class="nav-item ml-3">
-                      <a href="{{ route('get-rute') }}" class="nav-link">
+                    <li class="nav-item ml-4">
+                      <a href="#map" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Nama Rute</p>
                       </a>
                     </li>
-                    <li class="nav-item ml-3">
+                    <li class="nav-item ml-4">
                       <a href="{{ route('get-rute') }}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Smartbin Visit</p>
                       </a>
                     </li>
-                    <li class="nav-item ml-3">
-                      <a href="{{ route('get-rute') }}" class="nav-link">
+                    <li class="nav-item ml-4">
+                      <a href="#Jadwal" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Jadwal</p>
                       </a>
@@ -130,203 +130,363 @@
       <!-- /.sidebar -->
     </aside>
 
-    <!-- map peta -->
-    <style>
-      #map {
-        height: 100vh;
-        width: 100%;
-      }
+    <div class="content-wrapper" style="min-height: 638.2px;">
+      <!-- main content -->
+      <section class="content">
+        <!-- CSS map peta -->
+        <style>
+          #map {
+            height: 92vh;
+            width: 100%;
+          }
 
-      .leaflet-routing-container {
-        color: black !important;
-        background-color: white !important;
-      }
-      
-      .legend {
-        background-color: #343a40;
-        padding: 10px;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        position: absolute;
-        right: 20px;
-        left: auto;
-        bottom: 20px;
-        z-index: 1000;
-      }
+          .leaflet-routing-container {
+            color: black !important;
+            background-color: white !important;
+          }
 
-      .legend-item {
-        display: flex;
-        align-items: center;
-        margin-bottom: 5px;
-      }
+          .legend {
+            background-color: #343a40;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: absolute;
+            right: 20px;
+            left: auto;
+            bottom: 20px;
+            z-index: 1000;
+          }
 
-      .legend-icon {
-        width: 20px;
-        height: 20px;
-        margin-right: 8px;
-      }
-    </style>
-    <div id="map"></div>
+          .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+          }
 
-    <!-- Legenda Kapasitas 100L-->
-    <div class="legend ml-5">
-    <div class="legend-item">
-      <img class="legend-icon" src="https://img.icons8.com/plasticine/100/filled-trash.png">
-      Kapasitas 100L
+          .legend-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+          }
+        </style>
+
+        <!-- Map Peta -->
+        <div id="map">
+          <!-- Legenda Kapasitas 100L-->
+          <div class="legend">
+            <div class="legend-item">
+              <img class="legend-icon" src="https://img.icons8.com/plasticine/100/filled-trash.png">
+              Kapasitas 100L
+            </div>
+          </div>
+
+          <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+          <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+          <script src="https://unpkg.com/leaflet-routing-machine@3.3.4/dist/leaflet-routing-machine.css"></script>
+          <script>
+            var map = L.map('map').setView([-6.244528, 106.832361], 16);
+            var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+              attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            });
+            osm.addTo(map);
+
+            var redMarkerIcon = L.icon({
+              iconUrl: 'https://img.icons8.com/plasticine/100/filled-trash.png',
+              shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+              iconSize: [25, 41],
+              iconAnchor: [12, 41],
+              popupAnchor: [1, -34],
+              shadowSize: [41, 41]
+            });
+
+            var coordinates = [
+              [-6.244528, 106.832361],
+              [-6.245111, 106.832306],
+              [-6.245233, 106.831592],
+              [-6.245192, 106.831250],
+              [-6.245311, 106.830833],
+              [-6.245233, 106.830694],
+              [-6.244889, 106.830750],
+              [-6.244500, 106.830917],
+              [-6.244417, 106.830917],
+              [-6.244306, 106.830944],
+              [-6.244306, 106.830833],
+              [-6.243806, 106.830750],
+              [-6.243750, 106.830806],
+              [-6.243667, 106.830750],
+              [-6.243389, 106.830694],
+              [-6.243333, 106.830750],
+              [-6.243194, 106.830694],
+              [-6.242972, 106.830583],
+              [-6.242972, 106.830750],
+              [-6.242972, 106.830917],
+              [-6.242972, 106.831639],
+              [-6.242972, 106.831694],
+              [-6.242972, 106.831889],
+              [-6.242972, 106.832194],
+              [-6.242972, 106.832528],
+              [-6.242972, 106.882333],
+              [-6.242972, 106.882778],
+              [-6.242972, 106.882639],
+              [-6.242972, 106.882917],
+              [-6.242972, 106.882222],
+              [-6.242972, 106.882667],
+              [-6.242972, 106.882250],
+              [-6.242972, 106.882222],
+              [-6.242972, 106.882361],
+              [-6.242972, 106.881917]
+            ];
+
+            var markers = [];
+            for (var i = 0; i < coordinates.length; i++) {
+              var marker = L.marker(coordinates[i], {
+                icon: redMarkerIcon
+              }).bindPopup('Titik ' + (i + 1));
+              marker.addTo(map);
+            }
+
+            var routingControl = L.Routing.control({
+              waypoints: [
+                L.latLng(-6.244528, 106.832361),
+                L.latLng(-6.245111, 106.832306),
+                L.latLng(-6.245233, 106.831592),
+                L.latLng(-6.245192, 106.831250),
+                L.latLng(-6.245311, 106.830833),
+                L.latLng(-6.245233, 106.830694),
+                L.latLng(-6.244889, 106.830750),
+                L.latLng(-6.244500, 106.830917),
+                L.latLng(-6.244417, 106.830917),
+                L.latLng(-6.244306, 106.830944),
+                L.latLng(-6.244306, 106.830833),
+                L.latLng(-6.243806, 106.830750),
+                L.latLng(-6.243750, 106.830806),
+                L.latLng(-6.243667, 106.830750),
+                L.latLng(-6.243389, 106.830694),
+                L.latLng(-6.243333, 106.830750),
+                L.latLng(-6.243194, 106.830694),
+                L.latLng(-6.242972, 106.830583),
+                L.latLng(-6.242972, 106.830750),
+                L.latLng(-6.242972, 106.830917),
+                L.latLng(-6.242972, 106.831639),
+                L.latLng(-6.242972, 106.831694),
+                L.latLng(-6.242972, 106.831889),
+                L.latLng(-6.242972, 106.832194),
+                L.latLng(-6.242972, 106.832528),
+                L.latLng(-6.242972, 106.882333),
+                L.latLng(-6.242972, 106.882778),
+                L.latLng(-6.242972, 106.882639),
+                L.latLng(-6.242972, 106.882917),
+                L.latLng(-6.242972, 106.882222),
+                L.latLng(-6.242972, 106.882667),
+                L.latLng(-6.242972, 106.882250),
+                L.latLng(-6.242972, 106.882222),
+                L.latLng(-6.242972, 106.882361),
+                L.latLng(-6.242972, 106.881917)
+              ],
+              routeWhileDragging: true
+            }).addTo(map);
+
+            var OpenStreetMap_BZH = L.tileLayer('https://tile.openstreetmap.bzh/br/{z}/{x}/{y}.png', {
+              maxZoom: 19,
+              attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Tiles courtesy of <a href="http://www.openstreetmap.bzh/" target="_blank">Breton OpenStreetMap Team</a>',
+              bounds: [
+                [46.2, -5.5],
+                [50, 0.7]
+              ]
+            });
+            OpenStreetMap_BZH.addTo(map);
+
+            var googleStreets = L.tileLayer('http://{s}.google.com/vt?lyrs=m&x={x}&y={y}&z={z}', {
+              maxZoom: 20,
+              subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
+            });
+            googleStreets.addTo(map);
+
+            var googleSat = L.tileLayer('http://{s}.google.com/vt?lyrs=s&x={x}&y={y}&z={z}', {
+              maxZoom: 20,
+              subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
+            });
+            googleSat.addTo(map);
+
+            var baseLayers = {
+              "OpenStreetMap": osm,
+              "Satelite": googleSat,
+              "Google Map": googleStreets,
+            };
+
+            var overlays = {};
+            for (var i = 0; i < markers.length; i++) {
+              overlays['Titik ' + (i + 1)] = markers[i];
+            };
+
+            L.control.layers(baseLayers, overlays).addTo(map);
+          </script>
+        </div>
+
+        <!-- Menu Jadwal -->
+        <div id="Jadwal">
+          <div class="col-md-20 mt-3">
+            <div class="card">
+              <div class="card-header border-transparent">
+                <h3 class="card-title">Latest Orders</h3>
+
+                <!-- <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div> -->
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body p-0">
+                <div class="table-responsive">
+                  <table class="table m-0">
+                    <thead>
+                      <tr>
+                        <th>Order ID</th>
+                        <th>Item</th>
+                        <th>Status</th>
+                        <th>Popularity</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                        <td>Call of Duty IV</td>
+                        <td><span class="badge badge-success">Shipped</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">OR1848</a></td>
+                        <td>Samsung Smart TV</td>
+                        <td><span class="badge badge-warning">Pending</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">OR7429</a></td>
+                        <td>iPhone 6 Plus</td>
+                        <td><span class="badge badge-danger">Delivered</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">OR7429</a></td>
+                        <td>Samsung Smart TV</td>
+                        <td><span class="badge badge-info">Processing</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63</div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">OR1848</a></td>
+                        <td>Samsung Smart TV</td>
+                        <td><span class="badge badge-warning">Pending</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">OR7429</a></td>
+                        <td>iPhone 6 Plus</td>
+                        <td><span class="badge badge-danger">Delivered</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                        <td>Call of Duty IV</td>
+                        <td><span class="badge badge-success">Shipped</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                        <td>Call of Duty IV</td>
+                        <td><span class="badge badge-success">Shipped</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">OR1848</a></td>
+                        <td>Samsung Smart TV</td>
+                        <td><span class="badge badge-warning">Pending</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">OR7429</a></td>
+                        <td>iPhone 6 Plus</td>
+                        <td><span class="badge badge-danger">Delivered</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">OR7429</a></td>
+                        <td>Samsung Smart TV</td>
+                        <td><span class="badge badge-info">Processing</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63</div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">OR1848</a></td>
+                        <td>Samsung Smart TV</td>
+                        <td><span class="badge badge-warning">Pending</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">OR7429</a></td>
+                        <td>iPhone 6 Plus</td>
+                        <td><span class="badge badge-danger">Delivered</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                        <td>Call of Duty IV</td>
+                        <td><span class="badge badge-success">Shipped</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.table-responsive -->
+              </div>
+              <!-- /.card-body -->
+              <div class="card-footer clearfix">
+                <a href="javascript:void(0)" class="btn btn-sm btn-info float-left">Place New Order</a>
+                <a href="javascript:void(0)" class="btn btn-sm btn-secondary float-right">View All Orders</a>
+              </div>
+              <!-- /.card-footer -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Control Sidebar -->
+      <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+      </aside>
+      <!-- ./wrapper -->
     </div>
-    </div>
-    
-    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
-    <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
-    <script src="https://unpkg.com/leaflet-routing-machine@3.3.4/dist/leaflet-routing-machine.css"></script>
-    <script>
-      var map = L.map('map').setView([-6.244528, 106.832361], 16);
-      var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      });
-      osm.addTo(map);
-
-      var redMarkerIcon = L.icon({
-        iconUrl: 'https://img.icons8.com/plasticine/100/filled-trash.png',
-        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
-        iconSize: [25, 41],
-        iconAnchor: [12, 41],
-        popupAnchor: [1, -34],
-        shadowSize: [41, 41]
-      });
-
-      var coordinates = [
-        [-6.244528, 106.832361],
-        [-6.245111, 106.832306],
-        [-6.245233, 106.831592],
-        [-6.245192, 106.831250],
-        [-6.245311, 106.830833],
-        [-6.245233, 106.830694],
-        [-6.244889, 106.830750],
-        [-6.244500, 106.830917],
-        [-6.244417, 106.830917],
-        [-6.244306, 106.830944],
-        [-6.244306, 106.830833],
-        [-6.243806, 106.830750],
-        [-6.243750, 106.830806],
-        [-6.243667, 106.830750],
-        [-6.243389, 106.830694],
-        [-6.243333, 106.830750],
-        [-6.243194, 106.830694],
-        [-6.242972, 106.830583],
-        [-6.242972, 106.830750],
-        [-6.242972, 106.830917],
-        [-6.242972, 106.831639],
-        [-6.242972, 106.831694],
-        [-6.242972, 106.831889],
-        [-6.242972, 106.832194],
-        [-6.242972, 106.832528],
-        [-6.242972, 106.882333],
-        [-6.242972, 106.882778],
-        [-6.242972, 106.882639],
-        [-6.242972, 106.882917],
-        [-6.242972, 106.882222],
-        [-6.242972, 106.882667],
-        [-6.242972, 106.882250],
-        [-6.242972, 106.882222],
-        [-6.242972, 106.882361],
-        [-6.242972, 106.881917]
-      ];
-
-      var markers = [];
-      for (var i = 0; i < coordinates.length; i++) {
-        var marker = L.marker(coordinates[i], {
-          icon: redMarkerIcon
-        }).bindPopup('Titik ' + (i + 1));
-        marker.addTo(map);
-      }
-
-      var routingControl = L.Routing.control({
-        waypoints: [
-          L.latLng(-6.244528, 106.832361),
-          L.latLng(-6.245111, 106.832306),
-          L.latLng(-6.245233, 106.831592),
-          L.latLng(-6.245192, 106.831250),
-          L.latLng(-6.245311, 106.830833),
-          L.latLng(-6.245233, 106.830694),
-          L.latLng(-6.244889, 106.830750),
-          L.latLng(-6.244500, 106.830917),
-          L.latLng(-6.244417, 106.830917),
-          L.latLng(-6.244306, 106.830944),
-          L.latLng(-6.244306, 106.830833),
-          L.latLng(-6.243806, 106.830750),
-          L.latLng(-6.243750, 106.830806),
-          L.latLng(-6.243667, 106.830750),
-          L.latLng(-6.243389, 106.830694),
-          L.latLng(-6.243333, 106.830750),
-          L.latLng(-6.243194, 106.830694),
-          L.latLng(-6.242972, 106.830583),
-          L.latLng(-6.242972, 106.830750),
-          L.latLng(-6.242972, 106.830917),
-          L.latLng(-6.242972, 106.831639),
-          L.latLng(-6.242972, 106.831694),
-          L.latLng(-6.242972, 106.831889),
-          L.latLng(-6.242972, 106.832194),
-          L.latLng(-6.242972, 106.832528),
-          L.latLng(-6.242972, 106.882333),
-          L.latLng(-6.242972, 106.882778),
-          L.latLng(-6.242972, 106.882639),
-          L.latLng(-6.242972, 106.882917),
-          L.latLng(-6.242972, 106.882222),
-          L.latLng(-6.242972, 106.882667),
-          L.latLng(-6.242972, 106.882250),
-          L.latLng(-6.242972, 106.882222),
-          L.latLng(-6.242972, 106.882361),
-          L.latLng(-6.242972, 106.881917)
-        ],
-        routeWhileDragging: true
-      }).addTo(map);
-
-      var OpenStreetMap_BZH = L.tileLayer('https://tile.openstreetmap.bzh/br/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Tiles courtesy of <a href="http://www.openstreetmap.bzh/" target="_blank">Breton OpenStreetMap Team</a>',
-        bounds: [
-          [46.2, -5.5],
-          [50, 0.7]
-        ]
-      });
-      OpenStreetMap_BZH.addTo(map);
-
-      var googleStreets = L.tileLayer('http://{s}.google.com/vt?lyrs=m&x={x}&y={y}&z={z}', {
-        maxZoom: 20,
-        subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
-      });
-      googleStreets.addTo(map);
-
-      var googleSat = L.tileLayer('http://{s}.google.com/vt?lyrs=s&x={x}&y={y}&z={z}', {
-        maxZoom: 20,
-        subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
-      });
-      googleSat.addTo(map);
-
-      var baseLayers = {
-        "OpenStreetMap": osm,
-        "Satelite": googleSat,
-        "Google Map": googleStreets,
-      };
-
-      var overlays = {};
-      for (var i = 0; i < markers.length; i++) {
-        overlays['Titik ' + (i + 1)] = markers[i];
-      };
-
-      L.control.layers(baseLayers, overlays).addTo(map);
-    </script>
-
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-      <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
-
   </div>
-  <!-- ./wrapper -->
-
   <!-- REQUIRED SCRIPTS -->
   <!-- jQuery -->
   <script src="plugins/jquery/jquery.min.js"></script>

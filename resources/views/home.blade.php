@@ -29,7 +29,7 @@
       <!-- Left navbar links -->
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="#" role="button"><i class="fas fa-bars"></i></a>
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
           <a href="{{ route('home') }}" class="nav-link">Beranda</a>
@@ -71,7 +71,7 @@
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-            <li class="nav-item menu-open">
+            <li class="nav-item menu-is-opening menu-open">
               <a href="#" class="nav-link active">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
@@ -94,19 +94,19 @@
                     </p>
                   </a>
                   <ul class="nav nav-treeview">
-                    <li class="nav-item ml-3">
+                    <li class="nav-item ml-4">
                       <a href="{{ route('get-rute') }}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Nama Rute</p>
                       </a>
                     </li>
-                    <li class="nav-item ml-3">
+                    <li class="nav-item ml-4">
                       <a href="{{ route('get-rute') }}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Smartbin Visit</p>
                       </a>
                     </li>
-                    <li class="nav-item ml-3">
+                    <li class="nav-item ml-4">
                       <a href="{{ route('get-rute') }}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Jadwal</p>
