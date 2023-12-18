@@ -88,7 +88,7 @@
                   </a>
                 </li>
                 <li class="nav-item menu-open">
-                  <a href="{{ route('get-rute') }}" class="nav-link active">
+                  <a href="#" class="nav-link active">
                     <img width="25" height="25" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAACxUlEQVR4nO2Yu49NQRzHZ7FIECFeHSJLIYhC9rrWo1LQildCFB6F6GhWxKNQYCMi/gBEsSHRUCGLpZFNUCg8glVZiY2VEGL5yMjv2FnnfWfOnXvjfLsz8zu/7/nM+c3jHKVKlSpVqtT/JKAF6CG7elUjClhJPt1XjSjgrDzgGdXkZdUvIO2qWQVUBeKdhlLNKoooK+Ah/lRxCeJL/UFZpQxmT6byw5/+lpWTN0dYVevXPDr/qrSHCxpU+N4u6eqqBaTDMcjqpLJKAalExWcFqYdGrVYJIC3A20zl5QmkPQtIrvLyABEqEwc5H+RJUnU00UMj6wCEPEk6HE30im8QF4o8W7lIrIBb1E+RE9ZFYiWJ5gGbgdPAXeAzDXi2In5zJe6GscBiYBdwAXgEfLeESN/UUqTnaS6QmCTjBG4ncA7oA37m3QSBLZYDYg0yJqJtCrAOOARcNXbh2LKSOK8gQ3KkPgVsAubGxM0CNgLHgJvAB+COHDcmA198g0RpALgBHAU2ADNTcug3V4hUBoBW4ESOnG+AbuAgsBaYqgHl+ocXEGCi/p8kscPANWA/sB04DDx2/DzDtXqkgVyWuFfAkoh+Xff7HCzN1h4qAWKFxAwC81OAtZGNrD1Uwo2XJKbTaFsjr3pIltEZxqg9sQCx9lAJIM8kZqFcT5eRM9VtxB+xALH2UAkgXyVmglyvj7h/0IjfYQFi69GbBKI3Mq3Zct0G/PonQZ8Rf0DazscmDXsMFO2hZDfW2ma0HTeMPurTqNF3Xdp3N5KHMlaJp8B4o71NSmCa0bZc9oBvweTM6LGnaA+lEwMvxUjvJ60xcQuA1xJ3MrPBiMfzIj3+CFhmfGTppW8rMEceYJGsIp+k/14wafMIWCpLbWEeJswLknUFmFSTwQhMoR6BkR6dvcBt4L0cF/S3x0X9p8QqeR09SpUqpZpfvwEgyUkisbZ/cwAAAABJRU5ErkJggg=="></i>
                     <p>Rute
                       <i class="right fas fa-angle-left"></i>
@@ -102,7 +102,7 @@
                       </a>
                     </li>
                     <li class="nav-item ml-4">
-                      <a href="{{ route('get-rute') }}" class="nav-link">
+                      <a href="#" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Smartbin Visit</p>
                       </a>
@@ -347,20 +347,40 @@
                   <table class="table m-0">
                     <thead>
                       <tr>
-                        <th>Order ID</th>
-                        <th>Item</th>
-                        <th>Status</th>
-                        <th>Popularity</th>
+                        <th>Alamat</th>
+                        <th>Tanggal</th>
+                        <th>Waktu</th>
+                        <th>Keterangan</th>
+                        <th>Titik Kordinat</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                        <td>Call of Duty IV</td>
-                        <td><span class="badge badge-success">Shipped</span></td>
+                        <td><a href="pages/examples/invoice.html">Jalan Raya Merdeka no.10</a></td>
+                        <td>01 Januari 2024</td>
+                        <td><span class="badge badge-success">08:00</span></td>
                         <td>
-                          <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
+                          <div class="sparkbar" data-color="#00a65a" data-height="20">Penuh</div>
                         </td>
+                        <td><a href="pages/examples/invoice.html">-6°14'40.3"S 106°49'56.5"E</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">Jalan Gatot Subroto no.20</a></td>
+                        <td>02 Februari 2024</td>
+                        <td><span class="badge badge-success">09:00</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#00a65a" data-height="20">Setengah Penuh</div>
+                        </td>
+                        <td><a href="pages/examples/invoice.html">-6°14'42.4"S 106°49'56.3"E</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">Jalan Sudirman no.30</a></td>
+                        <td>03 Maret 2024</td>
+                        <td><span class="badge badge-success">10:00</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#00a65a" data-height="20">Kosong</div>
+                        </td>
+                        <td><a href="pages/examples/invoice.html">-6°14'42.8"S 106°49'53.7"E</a></td>
                       </tr>
                       <tr>
                         <td><a href="pages/examples/invoice.html">OR1848</a></td>
@@ -369,6 +389,7 @@
                         <td>
                           <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
                         </td>
+                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
                       </tr>
                       <tr>
                         <td><a href="pages/examples/invoice.html">OR7429</a></td>
@@ -377,6 +398,7 @@
                         <td>
                           <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
                         </td>
+                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
                       </tr>
                       <tr>
                         <td><a href="pages/examples/invoice.html">OR7429</a></td>
@@ -385,6 +407,7 @@
                         <td>
                           <div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63</div>
                         </td>
+                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
                       </tr>
                       <tr>
                         <td><a href="pages/examples/invoice.html">OR1848</a></td>
@@ -393,6 +416,7 @@
                         <td>
                           <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
                         </td>
+                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
                       </tr>
                       <tr>
                         <td><a href="pages/examples/invoice.html">OR7429</a></td>
@@ -401,38 +425,7 @@
                         <td>
                           <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
                         </td>
-                      </tr>
-                      <tr>
                         <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                        <td>Call of Duty IV</td>
-                        <td><span class="badge badge-success">Shipped</span></td>
-                        <td>
-                          <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                        <td>Call of Duty IV</td>
-                        <td><span class="badge badge-success">Shipped</span></td>
-                        <td>
-                          <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                        <td>Samsung Smart TV</td>
-                        <td><span class="badge badge-warning">Pending</span></td>
-                        <td>
-                          <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                        <td>iPhone 6 Plus</td>
-                        <td><span class="badge badge-danger">Delivered</span></td>
-                        <td>
-                          <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-                        </td>
                       </tr>
                       <tr>
                         <td><a href="pages/examples/invoice.html">OR7429</a></td>
@@ -441,6 +434,7 @@
                         <td>
                           <div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63</div>
                         </td>
+                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
                       </tr>
                       <tr>
                         <td><a href="pages/examples/invoice.html">OR1848</a></td>
@@ -449,6 +443,7 @@
                         <td>
                           <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
                         </td>
+                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
                       </tr>
                       <tr>
                         <td><a href="pages/examples/invoice.html">OR7429</a></td>
@@ -457,6 +452,7 @@
                         <td>
                           <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
                         </td>
+                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
                       </tr>
                       <tr>
                         <td><a href="pages/examples/invoice.html">OR9842</a></td>
@@ -465,6 +461,7 @@
                         <td>
                           <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
                         </td>
+                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
                       </tr>
                     </tbody>
                   </table>
