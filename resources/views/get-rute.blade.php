@@ -395,6 +395,18 @@
                         <td><a href="pages/examples/invoice.html">Jalan Gatot Subroto no.20</a></td>
                         <td>02 Februari 2024</td>
                         <td><span class="badge badge-success">09:00</span></td>
+                        <td><a href="pages/examples/invoice.html">Jalan Raya Merdeka no.10</a></td>
+                        <td>01 Januari 2024</td>
+                        <td><span class="badge badge-success">08:00</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#00a65a" data-height="20">Penuh</div>
+                        </td>
+                        <td><a href="pages/examples/invoice.html">-6°14'40.3"S 106°49'56.5"E</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">Jalan Gatot Subroto no.20</a></td>
+                        <td>02 Februari 2024</td>
+                        <td><span class="badge badge-success">09:00</span></td>
                         <td>
                           <div class="sparkbar" data-color="#00a65a" data-height="20">Setengah Penuh</div>
                         </td>
