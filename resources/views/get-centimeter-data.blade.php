@@ -312,6 +312,150 @@
             L.control.layers(baseLayers, overlays).addTo(map);
           </script>
         </div>
+
+        <!-- Menu Jadwal -->
+        <div id="Jadwal">
+          <div class="col-md-20 mt-3">
+            <div class="card">
+              <div class="card-header border-transparent">
+                <h3 class="card-title">Latest Orders</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body p-0">
+                <div class="table-responsive">
+                  <table class="table m-0">
+                    <thead>
+                      <tr>
+                        <th>Alamat</th>
+                        <th>Tanggal</th>
+                        <th>Waktu</th>
+                        <th>Keterangan</th>
+                        <th>Titik Kordinat</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">Jalan Raya Merdeka no.10</a></td>
+                        <td>01 Januari 2024</td>
+                        <td><span class="badge badge-success">08:00</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#00a65a" data-height="20">Penuh</div>
+                        </td>
+                        <td><a href="pages/examples/invoice.html">-6.244528, 106.832361</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">Jalan Gatot Subroto no.20</a></td>
+                        <td>02 Februari 2024</td>
+                        <td><span class="badge badge-success">09:00</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#00a65a" data-height="20">Setengah Penuh</div>
+                        </td>
+                        <td><a href="pages/examples/invoice.html">-6°14'42.4"S 106°49'56.3"E</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">Jalan Sudirman no.30</a></td>
+                        <td>03 Maret 2024</td>
+                        <td><span class="badge badge-success">10:00</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#00a65a" data-height="20">Kosong</div>
+                        </td>
+                        <td><a href="pages/examples/invoice.html">-6°14'42.8"S 106°49'53.7"E</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">Jalan Kuninngan 1</a></td>
+                        <td>20 Desember 2023</td>
+                        <td><span class="badge badge-warning">Pending</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
+                        </td>
+                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">OR7429</a></td>
+                        <td>iPhone 6 Plus</td>
+                        <td><span class="badge badge-danger">Delivered</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
+                        </td>
+                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">OR7429</a></td>
+                        <td>Samsung Smart TV</td>
+                        <td><span class="badge badge-info">Processing</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63</div>
+                        </td>
+                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">OR1848</a></td>
+                        <td>Samsung Smart TV</td>
+                        <td><span class="badge badge-warning">Pending</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
+                        </td>
+                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">OR7429</a></td>
+                        <td>iPhone 6 Plus</td>
+                        <td><span class="badge badge-danger">Delivered</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
+                        </td>
+                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">OR7429</a></td>
+                        <td>Samsung Smart TV</td>
+                        <td><span class="badge badge-info">Processing</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63</div>
+                        </td>
+                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">OR1848</a></td>
+                        <td>Samsung Smart TV</td>
+                        <td><span class="badge badge-warning">Pending</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
+                        </td>
+                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">OR7429</a></td>
+                        <td>iPhone 6 Plus</td>
+                        <td><span class="badge badge-danger">Delivered</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
+                        </td>
+                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                        <td>Call of Duty IV</td>
+                        <td><span class="badge badge-success">Shipped</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
+                        </td>
+                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.table-responsive -->
+              </div>
+              <!-- /.card-body -->
+              <div class="card-footer clearfix">
+                <a href="javascript:void(0)" class="btn btn-sm btn-info float-left">Place New Order</a>
+                <a href="javascript:void(0)" class="btn btn-sm btn-secondary float-right">View All Orders</a>
+              </div>
+              <!-- /.card-footer -->
+            </div>
+          </div>
+        </div>
       </section>
 
       <!-- Control Sidebar -->
@@ -331,13 +475,6 @@
   <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- AdminLTE -->
   <script src="dist/js/adminlte.js"></script>
-
-  <!-- OPTIONAL SCRIPTS -->
-  <script src="plugins/chart.js/Chart.min.js"></script>
-  <!-- AdminLTE for demo purposes -->
-  <script src="dist/js/demo.js"></script>
-  <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-  <script src="dist/js/pages/dashboard3.js"></script>
 </body>
 
 </html>

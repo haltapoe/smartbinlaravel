@@ -16,6 +16,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
+        <style>
+            main {
+                height: 100vh;
+                background-image: url('{{ asset('background_smartbin.jpg') }}');
+                background-size: cover;
+                background-position: center;
+            }
+        </style>
+    </head>
 </head>
 
 <body>
@@ -51,7 +60,7 @@
                 </div>
             </div>
         </nav>
-        <main class="" style="height: 648px; background-image: url('{{ asset('background_smartbin.jpg') }}'); background-size: cover;">
+        <main>
             @yield('content')
         </main>
     </div>
