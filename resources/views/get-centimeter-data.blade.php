@@ -318,7 +318,7 @@
           <div class="col-md-20 mt-3">
             <div class="card">
               <div class="card-header border-transparent">
-                <h3 class="card-title">Latest Orders</h3>
+                <h3 class="card-title">Daftar SmartBin</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body p-0">
@@ -335,112 +335,310 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td><a href="pages/examples/invoice.html">Jalan Raya Merdeka no.10</a></td>
-                        <td>01 Januari 2024</td>
-                        <td><span class="badge badge-success">08:00</span></td>
+                        <td><a href="pages/examples/invoice.html">Jalan Kuningan 1</a></td>
+                        <td>02 Februari 2024</td>
+                        <td><span class="badge badge-success">09:00</span></td>
                         <td>
-                          <div class="sparkbar" data-color="#00a65a" data-height="20">Penuh</div>
+                          <div class="sparkbar" data-color="#f39c12" data-height="20">Setengah</div>
                         </td>
                         <td><a href="pages/examples/invoice.html">-6.244528, 106.832361</a></td>
                       </tr>
                       <tr>
-                        <td><a href="pages/examples/invoice.html">Jalan Gatot Subroto no.20</a></td>
-                        <td>02 Februari 2024</td>
-                        <td><span class="badge badge-success">09:00</span></td>
-                        <td>
-                          <div class="sparkbar" data-color="#00a65a" data-height="20">Setengah Penuh</div>
-                        </td>
-                        <td><a href="pages/examples/invoice.html">-6°14'42.4"S 106°49'56.3"E</a></td>
-                      </tr>
-                      <tr>
-                        <td><a href="pages/examples/invoice.html">Jalan Sudirman no.30</a></td>
+                        <td><a href="pages/examples/invoice.html">Jalan Kuningan 2</a></td>
                         <td>03 Maret 2024</td>
                         <td><span class="badge badge-success">10:00</span></td>
                         <td>
                           <div class="sparkbar" data-color="#00a65a" data-height="20">Kosong</div>
                         </td>
-                        <td><a href="pages/examples/invoice.html">-6°14'42.8"S 106°49'53.7"E</a></td>
+                        <td><a href="pages/examples/invoice.html">-6.245233, 106.831592</a></td>
                       </tr>
                       <tr>
-                        <td><a href="pages/examples/invoice.html">Jalan Kuninngan 1</a></td>
+                        <td><a href="pages/examples/invoice.html">Jalan Kuningan 3</a></td>
+                        <td>20 Desember 2023</td>
+                        <td><span class="badge badge-warning">08:00</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#f39c12" data-height="20">Setengah</div>
+                        </td>
+                        <td><a href="pages/examples/invoice.html">-6.245192, 106.831250</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">Jalan kuningan 4</a></td>
+                        <td>20 Desember 2023</td>
+                        <td><span class="badge badge-danger">Delivered</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#f56954" data-height="20">Penuh</div>
+                        </td>
+                        <td><a href="pages/examples/invoice.html">-6.245311, 106.830833</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">Jalan Kuningan 5</a></td>
+                        <td>20 Desember 2023</td>
+                        <td><span class="badge badge-info">Processing</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#00c0ef" data-height="20">Kosong</div>
+                        </td>
+                        <td><a href="pages/examples/invoice.html">-6.245233, 106.830694</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">Jalan Kuningan 6</a></td>
                         <td>20 Desember 2023</td>
                         <td><span class="badge badge-warning">Pending</span></td>
                         <td>
-                          <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
+                          <div class="sparkbar" data-color="#f39c12" data-height="20">Setengah</div>
                         </td>
-                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                        <td><a href="pages/examples/invoice.html">-6.244889, 106.830750</a></td>
                       </tr>
                       <tr>
-                        <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                        <td>iPhone 6 Plus</td>
+                        <td><a href="pages/examples/invoice.html">Jalan Kuningan 7</a></td>
+                        <td>20 Desember 2023</td>
                         <td><span class="badge badge-danger">Delivered</span></td>
                         <td>
-                          <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
+                          <div class="sparkbar" data-color="#f56954" data-height="20">Penuh</div>
                         </td>
-                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                        <td><a href="pages/examples/invoice.html">-6.244500, 106.830917</a></td>
                       </tr>
                       <tr>
-                        <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                        <td>Samsung Smart TV</td>
+                        <td><a href="pages/examples/invoice.html">Jalan Kuningan 8</a></td>
+                        <td>20 Desember 2023</td>
                         <td><span class="badge badge-info">Processing</span></td>
                         <td>
-                          <div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63</div>
+                          <div class="sparkbar" data-color="#00c0ef" data-height="20">Kosong</div>
                         </td>
-                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                        <td><a href="pages/examples/invoice.html">-6.244417, 106.830917</a></td>
                       </tr>
                       <tr>
-                        <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                        <td>Samsung Smart TV</td>
+                        <td><a href="pages/examples/invoice.html">Jalan Kuningan 9</a></td>
+                        <td>20 Desember 2023</td>
                         <td><span class="badge badge-warning">Pending</span></td>
                         <td>
-                          <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
+                          <div class="sparkbar" data-color="#f39c12" data-height="20">Setengah</div>
                         </td>
-                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                        <td><a href="pages/examples/invoice.html">-6.244306, 106.830944</a></td>
                       </tr>
                       <tr>
-                        <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                        <td>iPhone 6 Plus</td>
+                        <td><a href="pages/examples/invoice.html">Jalan Kuningan 10</a></td>
+                        <td>20 Desember 2023</td>
                         <td><span class="badge badge-danger">Delivered</span></td>
                         <td>
-                          <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
+                          <div class="sparkbar" data-color="#f56954" data-height="20">Penuh</div>
                         </td>
-                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                        <td><a href="pages/examples/invoice.html">-6.244306, 106.830833</a></td>
                       </tr>
                       <tr>
-                        <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                        <td>Samsung Smart TV</td>
-                        <td><span class="badge badge-info">Processing</span></td>
-                        <td>
-                          <div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63</div>
-                        </td>
-                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                      </tr>
-                      <tr>
-                        <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                        <td>Samsung Smart TV</td>
-                        <td><span class="badge badge-warning">Pending</span></td>
-                        <td>
-                          <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-                        </td>
-                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                      </tr>
-                      <tr>
-                        <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                        <td>iPhone 6 Plus</td>
-                        <td><span class="badge badge-danger">Delivered</span></td>
-                        <td>
-                          <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-                        </td>
-                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                      </tr>
-                      <tr>
-                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                        <td>Call of Duty IV</td>
+                        <td><a href="pages/examples/invoice.html">Jalan Kuningan 11</a></td>
+                        <td>20 Desember 2023</td>
                         <td><span class="badge badge-success">Shipped</span></td>
                         <td>
-                          <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
+                          <div class="sparkbar" data-color="#00a65a" data-height="20">Kosong</div>
                         </td>
-                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                        <td><a href="pages/examples/invoice.html">-6.243806, 106.830750</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">Jalan Kuningan 12</a></td>
+                        <td>02 Februari 2024</td>
+                        <td><span class="badge badge-success">09:00</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#f39c12" data-height="20">Setengah</div>
+                        </td>
+                        <td><a href="pages/examples/invoice.html">-6.243750, 106.830806</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">Jalan Sudirman 13</a></td>
+                        <td>03 Maret 2024</td>
+                        <td><span class="badge badge-success">10:00</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#00a65a" data-height="20">Kosong</div>
+                        </td>
+                        <td><a href="pages/examples/invoice.html">-6.243667, 106.830750</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">Jalan Kuningan 14</a></td>
+                        <td>20 Desember 2023</td>
+                        <td><span class="badge badge-warning">08:00</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#f39c12" data-height="20">Setengah</div>
+                        </td>
+                        <td><a href="pages/examples/invoice.html">-6.243389, 106.830694</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">Jalan kuningan 15</a></td>
+                        <td>20 Desember 2023</td>
+                        <td><span class="badge badge-danger">Delivered</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#f56954" data-height="20">Penuh</div>
+                        </td>
+                        <td><a href="pages/examples/invoice.html">-6.243333, 106.830750</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">Jalan Kuningan 16</a></td>
+                        <td>20 Desember 2023</td>
+                        <td><span class="badge badge-info">Processing</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#00c0ef" data-height="20">Kosong</div>
+                        </td>
+                        <td><a href="pages/examples/invoice.html">-6.243194, 106.830694</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">Jalan Kuningan 17</a></td>
+                        <td>20 Desember 2023</td>
+                        <td><span class="badge badge-warning">Pending</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#f39c12" data-height="20">Setengah</div>
+                        </td>
+                        <td><a href="pages/examples/invoice.html">-6.242972, 106.830583</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">Jalan Kuningan 18</a></td>
+                        <td>20 Desember 2023</td>
+                        <td><span class="badge badge-danger">Delivered</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#f56954" data-height="20">Penuh</div>
+                        </td>
+                        <td><a href="pages/examples/invoice.html">-6.242972, 106.830750</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">Jalan Kuningan 19</a></td>
+                        <td>20 Desember 2023</td>
+                        <td><span class="badge badge-info">Processing</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#00c0ef" data-height="20">Kosong</div>
+                        </td>
+                        <td><a href="pages/examples/invoice.html">-6.242972, 106.830917</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">Jalan Kuningan 20</a></td>
+                        <td>20 Desember 2023</td>
+                        <td><span class="badge badge-warning">Pending</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#f39c12" data-height="20">Setengah</div>
+                        </td>
+                        <td><a href="pages/examples/invoice.html">-6.242972, 106.831639</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">Jalan Kuningan 21</a></td>
+                        <td>20 Desember 2023</td>
+                        <td><span class="badge badge-danger">Delivered</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#f56954" data-height="20">Penuh</div>
+                        </td>
+                        <td><a href="pages/examples/invoice.html">-6.242972, 106.831694</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">Jalan Kuningan 22</a></td>
+                        <td>20 Desember 2023</td>
+                        <td><span class="badge badge-success">Shipped</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#00a65a" data-height="20">Kosong</div>
+                        </td>
+                        <td><a href="pages/examples/invoice.html">-6.242972, 106.831889</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">Jalan Kuningan 23</a></td>
+                        <td>02 Februari 2024</td>
+                        <td><span class="badge badge-success">09:00</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#f39c12" data-height="20">Setengah</div>
+                        </td>
+                        <td><a href="pages/examples/invoice.html">-6.242972, 106.832194</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">Jalan Kuningan 24</a></td>
+                        <td>03 Maret 2024</td>
+                        <td><span class="badge badge-success">10:00</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#00a65a" data-height="20">Kosong</div>
+                        </td>
+                        <td><a href="pages/examples/invoice.html">-6.242972, 106.832528</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">Jalan Kuningan 25</a></td>
+                        <td>20 Desember 2023</td>
+                        <td><span class="badge badge-warning">08:00</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#f39c12" data-height="20">Setengah</div>
+                        </td>
+                        <td><a href="pages/examples/invoice.html">-6.242972, 106.882333</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">Jalan kuningan 26</a></td>
+                        <td>20 Desember 2023</td>
+                        <td><span class="badge badge-danger">Delivered</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#f56954" data-height="20">Penuh</div>
+                        </td>
+                        <td><a href="pages/examples/invoice.html">-6.242972, 106.882778</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">Jalan Kuningan 27</a></td>
+                        <td>20 Desember 2023</td>
+                        <td><span class="badge badge-info">Processing</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#00c0ef" data-height="20">Kosong</div>
+                        </td>
+                        <td><a href="pages/examples/invoice.html">-6.242972, 106.882639</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">Jalan Kuningan 28</a></td>
+                        <td>20 Desember 2023</td>
+                        <td><span class="badge badge-warning">Pending</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#f39c12" data-height="20">Setengah</div>
+                        </td>
+                        <td><a href="pages/examples/invoice.html">-6.242972, 106.882917</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">Jalan Kuningan 29</a></td>
+                        <td>20 Desember 2023</td>
+                        <td><span class="badge badge-danger">Delivered</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#f56954" data-height="20">Penuh</div>
+                        </td>
+                        <td><a href="pages/examples/invoice.html">-6.242972, 106.882222</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">Jalan Kuningan 30</a></td>
+                        <td>20 Desember 2023</td>
+                        <td><span class="badge badge-info">Processing</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#00c0ef" data-height="20">Kosong</div>
+                        </td>
+                        <td><a href="pages/examples/invoice.html">-6.242972, 106.882667</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">Jalan Kuningan 31</a></td>
+                        <td>20 Desember 2023</td>
+                        <td><span class="badge badge-warning">Pending</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#f39c12" data-height="20">Setengah</div>
+                        </td>
+                        <td><a href="pages/examples/invoice.html">-6.242972, 106.882250</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">Jalan Kuningan 32</a></td>
+                        <td>20 Desember 2023</td>
+                        <td><span class="badge badge-danger">Delivered</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#f56954" data-height="20">Penuh</div>
+                        </td>
+                        <td><a href="pages/examples/invoice.html">-6.242972, 106.882222</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">Jalan Kuningan 33</a></td>
+                        <td>20 Desember 2023</td>
+                        <td><span class="badge badge-success">Shipped</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#00a65a" data-height="20">Kosong</div>
+                        </td>
+                        <td><a href="pages/examples/invoice.html">-6.242972, 106.882361</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="pages/examples/invoice.html">Jalan Kuningan 34</a></td>
+                        <td>02 Februari 2024</td>
+                        <td><span class="badge badge-success">09:00</span></td>
+                        <td>
+                          <div class="sparkbar" data-color="#f39c12" data-height="20">Setengah</div>
+                        </td>
+                        <td><a href="pages/examples/invoice.html">-6.242972, 106.881917</a></td>
                       </tr>
                     </tbody>
                   </table>
