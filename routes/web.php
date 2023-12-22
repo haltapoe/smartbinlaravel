@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RuteController;
 use App\Http\Controllers\LokasiController;
 use App\Http\Controllers\KapasitassampahController;
+use App\Http\Controllers\SavedDataController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +32,4 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/get-lokasi', [LokasiController::class, 'getLokasi'])->name('get-lokasi');
 Route::get('/get-rute', [RuteController::class, 'getSmartbinData'])->name('get-rute');
 Route::get('/get-centimeter-data', [KapasitassampahController::class, 'getCentimeterData'])->name('get-centimeter-data');
+Route::post('/delete-endpoint', [SavedDataController::class, 'deleteSelected']);

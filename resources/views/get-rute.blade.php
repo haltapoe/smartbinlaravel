@@ -864,7 +864,7 @@
             var cell = newRow.insertCell(i);
             cell.innerHTML = data[i];
             }
-        
+
         // Tambahkan checkbox pada setiap baris
     var checkboxCell = newRow.insertCell(data.length);
     var checkbox = document.createElement('input');
@@ -884,26 +884,51 @@
         function deleteSelected() {
             var jadwalTable = document.getElementById('Jadwal').querySelector('table tbody');
             var selectedRows = [];
-    
+
             // Cari baris yang dipilih
             for (var i = 0; i < jadwalTable.rows.length; i++) {
                 var row = jadwalTable.rows[i];
-    
+
                 // Periksa apakah ada elemen checkbox pada baris
-                var checkbox = row.cells[0].querySelector('input[type="checkbox"]');
+                var checkbox = row.cells[row.cells.length - 1].querySelector('input[type="checkbox"]');
                 if (checkbox && checkbox.checked) {
                     selectedRows.push(row);
                 }
             }
-    
+
             // Hapus baris yang dipilih dari penyimpanan lokal dan tabel
-            for (var i = 0; i < selectedRows.length; i++) {
+            for (var i = selectedRows.length - 1; i >= 0; i--) {
                 var row = selectedRows[i];
                 var index = row.rowIndex - 1; // Mengurangkan satu karena baris header tidak dihitung
                 savedData.splice(index, 1);
                 localStorage.setItem('savedData', JSON.stringify(savedData));
                 jadwalTable.deleteRow(index);
             }
+            // Temukan semua checkbox yang dicentang
+            var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+           // Iterasi melalui checkbox yang dicentang dan ambil data terkait
+            checkboxes.forEach(function (checkbox) {
+                var row = checkbox.closest('tr'); // Temukan elemen tr terdekat
+                var rowData = {
+                    id: row.dataset.id, // Sesuaikan dengan atribut data yang sesuai
+                    // Tambahkan atribut data lain yang perlu Anda kumpulkan
+                };
+                selectedRows.push(rowData);
+            });
+
+            // Kirim permintaan Ajax ke server untuk menghapus data
+            $.ajax({
+                type: 'POST',
+                url: '/delete-endpoint',
+                data: { selectedRows: selectedRows },
+                success: function (response) {
+                    // Handle respons dari server
+                    console.log(response);
+                },
+                error: function (error) {
+                    console.error('Error:', error);
+                }
+            });
         }
         </script>
 
