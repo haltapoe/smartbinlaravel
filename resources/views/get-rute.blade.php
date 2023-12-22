@@ -705,7 +705,10 @@
         </div>
       </section>
 
-            <!-- Tambahkan script Bootstrap (pastikan untuk menyertakan file Bootstrap sebelumnya) -->
+        <!-- Tambahkan script Bootstrap dan jQuery -->
+            <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <!-- Tambahkan script Bootstrap (pastikan untuk menyertakan file Bootstrap sebelumnya) -->
         <script src="path/to/bootstrap.min.js"></script>
 
         <!-- Tambahkan script JavaScript -->
@@ -861,7 +864,13 @@
             var cell = newRow.insertCell(i);
             cell.innerHTML = data[i];
             }
-        }
+        
+        // Tambahkan checkbox pada setiap baris
+    var checkboxCell = newRow.insertCell(data.length);
+    var checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkboxCell.appendChild(checkbox);
+}
 
         function resetForm() {
             // Reset nilai formulir
@@ -870,6 +879,31 @@
             document.getElementById('inputIndikator').value = '';
             document.getElementById('inputKapasitas').value = '';
             document.getElementById('inputKoordinat').value = '';
+        }
+
+        function deleteSelected() {
+            var jadwalTable = document.getElementById('Jadwal').querySelector('table tbody');
+            var selectedRows = [];
+    
+            // Cari baris yang dipilih
+            for (var i = 0; i < jadwalTable.rows.length; i++) {
+                var row = jadwalTable.rows[i];
+    
+                // Periksa apakah ada elemen checkbox pada baris
+                var checkbox = row.cells[0].querySelector('input[type="checkbox"]');
+                if (checkbox && checkbox.checked) {
+                    selectedRows.push(row);
+                }
+            }
+    
+            // Hapus baris yang dipilih dari penyimpanan lokal dan tabel
+            for (var i = 0; i < selectedRows.length; i++) {
+                var row = selectedRows[i];
+                var index = row.rowIndex - 1; // Mengurangkan satu karena baris header tidak dihitung
+                savedData.splice(index, 1);
+                localStorage.setItem('savedData', JSON.stringify(savedData));
+                jadwalTable.deleteRow(index);
+            }
         }
         </script>
 
