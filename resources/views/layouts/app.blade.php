@@ -18,7 +18,7 @@
 
         <style>
             main {
-                height: 100vh;
+                height: 90vh;
                 background-image: url('{{ asset('background_smartbin.jpg') }}');
                 background-size: cover;
                 background-position: center;

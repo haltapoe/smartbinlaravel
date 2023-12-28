@@ -190,6 +190,10 @@
               <img class="legend-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA6ElEQVR4nO2ZMQ6CQBBFt7KeBToCn5rD6A3U0yh6Ob0Ee40xG0NlEHCyAZP/kl/vzOzrvnOEbIOmaQ4AAgCdSKiqau+2BoDwzHNVka95FEVcol9lyLZtdwBuY5eeGn7I2M8A6OIbyRYAcD+XpQbvZw87N8F7PZWl1nV9TblASDG8DktkWVq9lmjyawAoFxiDPyBUyAYVEipkgwoJFbJBhYQK2aBCQoVsUCGhQjaokFAhG1RIqJANKiRUyAYVEipkgwrJ+gqFf6+YuljExYdSDH98l3yX1DVrF680o9Bemj42lElrVkLcBy96RVxBGRRIAgAAAABJRU5ErkJggg==">
               Sampah Penuh
             </div>
+            <div class="legend-item">
+                <img class="legend-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA6ElEQVR4nO2ZMQ6CQBBFt7KeBToCn5rD6A3U0yh6Ob0Ee40xG0NlEHCyAZP/kl/vzOzrvnOEbIOmaQ4AAgCdSKiqau+2BoDwzHNVka95FEVcol9lyLZtdwBuY5eeGn7I2M8A6OIbyRYAcD+XpQbvZw87N8F7PZWl1nV9TblASDG8DktkWVq9lmjyawAoFxiDPyBUyAYVEipkgwoJFbJBhYQK2aBCQoVsUCGhQjaokFAhG1RIqJANKiRUyAYVEipkgwrJ+gqFf6+YuljExYdSDH98l3yX1DVrF680o9Bemj42lElrVkLcBy96RVxBGRRIAgAAAABJRU5ErkJggg==">
+                Kapasitas Max 100 L
+              </div>
           </div>
 
           <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
