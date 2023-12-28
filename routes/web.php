@@ -33,3 +33,4 @@ Route::get('/get-lokasi', [LokasiController::class, 'getLokasi'])->name('get-lok
 Route::get('/get-rute', [RuteController::class, 'getSmartbinData'])->name('get-rute');
 Route::get('/get-centimeter-data', [KapasitassampahController::class, 'getCentimeterData'])->name('get-centimeter-data');
 Route::post('/delete-endpoint', [SavedDataController::class, 'deleteSelected']);
+Route::post('/delete-endpoint', 'DeleteController@deleteData');

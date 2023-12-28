@@ -6,6 +6,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+
   <title>SmartBin | Rute</title>
 
   <!-- Google Font: Source Sans Pro -->
@@ -900,33 +902,34 @@
             for (var i = selectedRows.length - 1; i >= 0; i--) {
                 var row = selectedRows[i];
                 var index = row.rowIndex - 1; // Mengurangkan satu karena baris header tidak dihitung
+
+                // Kirim permintaan Ajax ke server untuk menghapus data
+                var id = row.dataset.id; // Sesuaikan dengan cara Anda menyimpan ID
+                deleteDataOnServer(id); // Panggil fungsi untuk menghapus data di server
+
                 savedData.splice(index, 1);
                 localStorage.setItem('savedData', JSON.stringify(savedData));
                 jadwalTable.deleteRow(index);
             }
-            // Temukan semua checkbox yang dicentang
-            var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-           // Iterasi melalui checkbox yang dicentang dan ambil data terkait
-            checkboxes.forEach(function (checkbox) {
-                var row = checkbox.closest('tr'); // Temukan elemen tr terdekat
-                var rowData = {
-                    id: row.dataset.id, // Sesuaikan dengan atribut data yang sesuai
-                    // Tambahkan atribut data lain yang perlu Anda kumpulkan
-                };
-                selectedRows.push(rowData);
-            });
-
-            // Kirim permintaan Ajax ke server untuk menghapus data
-            $.ajax({
-                type: 'POST',
-                url: '/delete-endpoint',
-                data: { selectedRows: selectedRows },
-                success: function (response) {
-                    // Handle respons dari server
-                    console.log(response);
-                },
-                error: function (error) {
-                    console.error('Error:', error);
+        }
+            // Fungsi untuk menghapus data pada server
+            function deleteDataOnServer(id) {
+                $.ajax({
+                    type: 'POST',
+                    url: '/delete-endpoint',
+                    data: { id: id },
+                    success: function (response) {
+                        // Handle respons dari server
+                        console.log(response);
+                    },
+                    error: function (error) {
+                        console.error('Error:', error);
+                    }
+                });
+                        // Tambahkan CSRF token ke setiap permintaan Ajax
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
         }
