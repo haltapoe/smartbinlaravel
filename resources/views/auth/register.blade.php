@@ -67,13 +67,6 @@
                                     {{ __('Register') }}
                                 </button>
 
-
-                                @if (Route::has('login'))
-                                <a class="btn btn-link" href="{{ route('login') }}">
-                                    {{ __('Have any accounts? Log in') }}
-                                </a>
-                                @endif
-
                             </div>
                         </div>
                     </form>

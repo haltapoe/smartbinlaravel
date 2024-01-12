@@ -16,15 +16,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-        <style>
-            main {
-                height: 90vh;
-                background-image: url('{{ asset('background_smartbin.jpg') }}');
-                background-size: cover;
-                background-position: center;
-            }
-        </style>
-    </head>
+    <style>
+        main {
+            height: 100vh;
+            background-image: url('{{ asset("background_smartbin.jpg") }}');
+            background-size: cover;
+            background-position: absolute;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -35,7 +35,7 @@
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'SmartBin') }}
-                    <img src="icon-smartbin.png" alt="" width="30px"></img>
+                    <img src='{{ asset("icon-smartbin.png") }}' alt="" width="30px"></img>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -48,6 +48,14 @@
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
 
+                        @if (Route::has('login') && !Route::is('login'))
+                        <li class="nav-item mx-2">
+                            <a href="{{ route('login') }}" class="btn btn-success">
+                                {{ __('Log In') }}
+                            </a>
+                        </li>
+                        @endif
+                        
                         @if (Route::has('register') && !Route::is('register'))
                         <li class="nav-item">
                             <a href="{{ route('register') }}" class="btn btn-success">
