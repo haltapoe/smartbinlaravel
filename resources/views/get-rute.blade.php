@@ -98,7 +98,7 @@
                   </a>
                   <ul class="nav nav-treeview">
                     <li class="nav-item ml-4">
-                      <a href="#map" class="nav-link">
+                      <a href="{{ route('get-rute') }}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Nama Rute</p>
                       </a>
@@ -148,6 +148,10 @@
             /* Tambahkan padding sesuai kebutuhan Anda */
           }
 
+          .form-control-sidebar {
+            max-width: 200px;
+          }
+
           .highlighted {
             background-color: rgba(255, 255, 255, 0.725);
             /* Nilai alpha antara 0 (transparan) hingga 1 (tidak transparan) */
@@ -170,9 +174,6 @@
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             position: absolute;
-            right: 20px;
-            left: auto;
-            bottom: 20px;
             z-index: 1000;
             display: flex;
             flex-direction: row;
@@ -190,542 +191,517 @@
             height: 20px;
             margin-right: 8px;
           }
+
+          .legend-item-kanan{
+            right: 20px;
+            left: auto;
+            bottom: 20px;
+          }
+
+          .legend-item-kiri{
+            right: auto;
+            left: 20px;
+            bottom: 20px;
+          }
         </style>
 
         <div id="map-input">
           <form id="route-form">
-            <label for="startCoord">Titik Awal:</label>
-            <input type="text" id="startCoord" name="startCoord" placeholder="Lat, Long">
-            <label for="endCoord">Titik Tujuan:</label>
-            <input type="text" id="endCoord" name="endCoord" placeholder="Lat, Long">
-            <button type="button" onclick="calculateRoute()">Cari Rute</button>
+            <div class="input-group">
+              <span class="input-group-text">Titik Awal</span>
+              <input type="text" class="form-control form-control-sidebar" id="startCoord" name="startCoord" placeholder="Lat, Long">
+              <span class="input-group-text">Titik Tujuan</span>
+              <input type="text" class="form-control form-control-sidebar" id="endCoord" name="endCoord" placeholder="Lat, Long">
+              <button type="button" class="btn btn-outline-secondary" onclick="calculateRoute()"><i class="fas fa-fw fa-search"></i></button>
           </form>
         </div>
-        <!-- Map Peta -->
-        <div id="map">
-
-          <!-- Legenda -->
-          <div class="legend">
-            <div class="legend-item">
-              <i class="fas fa-circle nav-icon mr-2 text-danger"></i>
-              Kapasitas 100 L
-            </div>
-            <div class="legend-item">
-              <i class="fas fa-circle nav-icon mr-2 text-danger"></i>
-              Penuh
-            </div>
-            <div class="legend-item">
-              <i class="fas fa-circle nav-icon mr-2 text-warning"></i>
-              Setengah
-            </div>
-            <div class="legend-item">
-              <i class="fas fa-circle nav-icon mr-2 text-success"></i>
-              Kosong
-            </div>
-          </div>
-
-          <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
-          <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
-          <script>
-            var map = L.map('map').setView([-6.244528, 106.832361], 16);
-            var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-              attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            });
-            osm.addTo(map);
-
-            var redMarkerIcon = L.icon({
-              iconUrl: 'https://img.icons8.com/plasticine/100/filled-trash.png',
-              shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
-              iconSize: [25, 41],
-              iconAnchor: [12, 41],
-              popupAnchor: [1, -34],
-              shadowSize: [41, 41]
-            });
-
-            var coordinates = [
-              [-6.244528, 106.832361],
-              [-6.245111, 106.832306],
-              [-6.245233, 106.831592],
-              [-6.245192, 106.831250],
-              [-6.245311, 106.830833],
-              [-6.245233, 106.830694],
-              [-6.244889, 106.830750],
-              [-6.244500, 106.830917],
-              [-6.244417, 106.830917],
-              [-6.244306, 106.830944],
-              [-6.244306, 106.830833],
-              [-6.243806, 106.830750],
-              [-6.243750, 106.830806],
-              [-6.243667, 106.830750],
-              [-6.243389, 106.830694],
-              [-6.243333, 106.830750],
-              [-6.243194, 106.830694],
-              [-6.242972, 106.830583],
-              [-6.242972, 106.830750],
-              [-6.242972, 106.830917],
-              [-6.242972, 106.831639],
-              [-6.242972, 106.831694],
-              [-6.242972, 106.831889],
-              [-6.242972, 106.832194],
-              [-6.242972, 106.832528],
-              [-6.242972, 106.882333],
-              [-6.242972, 106.882778],
-              [-6.242972, 106.882639],
-              [-6.242972, 106.882917],
-              [-6.242972, 106.882222],
-              [-6.242972, 106.882667],
-              [-6.242972, 106.882250],
-              [-6.242972, 106.882222],
-              [-6.242972, 106.882361],
-              [-6.242972, 106.881917]
-            ];
-
-            var markers = [];
-            for (var i = 0; i < coordinates.length; i++) {
-              var marker = L.marker(coordinates[i], {
-                icon: redMarkerIcon
-              }).bindPopup('Titik ' + (i + 1));
-              marker.addTo(map);
-            }
-
-            var routingControl = L.Routing.control({
-              waypoints: [
-                L.latLng(-6.244528, 106.832361),
-                L.latLng(-6.245111, 106.832306),
-                L.latLng(-6.245233, 106.831592),
-                L.latLng(-6.245192, 106.831250),
-                L.latLng(-6.245311, 106.830833),
-                L.latLng(-6.245233, 106.830694),
-                L.latLng(-6.244889, 106.830750),
-                L.latLng(-6.244500, 106.830917),
-                L.latLng(-6.244417, 106.830917),
-                L.latLng(-6.244306, 106.830944),
-                L.latLng(-6.244306, 106.830833),
-                L.latLng(-6.243806, 106.830750),
-                L.latLng(-6.243750, 106.830806),
-                L.latLng(-6.243667, 106.830750),
-                L.latLng(-6.243389, 106.830694),
-                L.latLng(-6.243333, 106.830750),
-                L.latLng(-6.243194, 106.830694),
-                L.latLng(-6.242972, 106.830583),
-                L.latLng(-6.242972, 106.830750),
-                L.latLng(-6.242972, 106.830917),
-                L.latLng(-6.242972, 106.831639),
-                L.latLng(-6.242972, 106.831694),
-                L.latLng(-6.242972, 106.831889),
-                L.latLng(-6.242972, 106.832194),
-                L.latLng(-6.242972, 106.832528),
-                L.latLng(-6.242972, 106.882333),
-                L.latLng(-6.242972, 106.882778),
-                L.latLng(-6.242972, 106.882639),
-                L.latLng(-6.242972, 106.882917),
-                L.latLng(-6.242972, 106.882222),
-                L.latLng(-6.242972, 106.882667),
-                L.latLng(-6.242972, 106.882250),
-                L.latLng(-6.242972, 106.882222),
-                L.latLng(-6.242972, 106.882361),
-                L.latLng(-6.242972, 106.881917)
-              ],
-              routeWhileDragging: true
-            }).addTo(map);
-
-            function calculateRoute() {
-              var startCoord = document.getElementById('startCoord').value.split(',').map(parseFloat);
-              var endCoord = document.getElementById('endCoord').value.split(',').map(parseFloat);
-              routingControl.setWaypoints([L.latLng(startCoord), L.latLng(endCoord)]);
-            }
-            var OpenStreetMap_BZH = L.tileLayer('https://tile.openstreetmap.bzh/br/{z}/{x}/{y}.png', {
-              maxZoom: 19,
-              attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Tiles courtesy of <a href="http://www.openstreetmap.bzh/" target="_blank">Breton OpenStreetMap Team</a>',
-              bounds: [
-                [46.2, -5.5],
-                [50, 0.7]
-              ]
-            });
-            OpenStreetMap_BZH.addTo(map);
-
-            var googleStreets = L.tileLayer('http://{s}.google.com/vt?lyrs=m&x={x}&y={y}&z={z}', {
-              maxZoom: 20,
-              subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
-            });
-            googleStreets.addTo(map);
-
-            var googleSat = L.tileLayer('http://{s}.google.com/vt?lyrs=s&x={x}&y={y}&z={z}', {
-              maxZoom: 20,
-              subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
-            });
-            googleSat.addTo(map);
-
-            var baseLayers = {
-              "OpenStreetMap": osm,
-              "Satelite": googleSat,
-              "Google Map": googleStreets,
-            };
-
-            var overlays = {};
-            for (var i = 0; i < markers.length; i++) {
-              overlays['Titik ' + (i + 1)] = markers[i];
-            };
-
-            L.control.layers(baseLayers, overlays).addTo(map);
-          </script>
-        </div>
-
-        <!-- Menu Jadwal -->
-        <div id="Jadwal">
-          <div class="col-md-20 mt-3">
-            <div class="card">
-              <div class="card-header border-transparent">
-                <h3 class="card-title">Jadwal SmartBin</h3>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body p-0">
-                <div class="table-responsive">
-                  <table class="table m-0">
-                    <thead>
-                      <tr>
-                        <th>Alamat</th>
-                        <th>Tanggal</th>
-                        <th>Indikator Sampah</th>
-                        <th>Kapasitas</th>
-                        <th>Titik Kordinat</th>
-                      </tr>
-                    </thead>
-                  </table>
-                </div>
-                <!-- /.table-responsive -->
-              </div>
-              <!-- /.card-body -->
-              <div class="card-footer clearfix">
-                <a href="javascript:void(0)" class="btn btn-sm btn-info float-left" id="inputDataBtn">Input Data</a>
-                <a href="javascript:void(0)" class="btn btn-sm btn-secondary float-right">Jadwal kendaraan</a>
-                <button type="button" class="btn btn-sm btn-danger float-right mr-2" onclick="deleteSelected()">Hapus</button>
-              </div>
-              <!-- /.card-footer -->
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Tambahkan script Bootstrap dan jQuery -->
-      <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-      <!-- Tambahkan script Bootstrap (pastikan untuk menyertakan file Bootstrap sebelumnya) -->
-      <script src="path/to/bootstrap.min.js"></script>
-
-      <!-- Tambahkan script JavaScript -->
-      <script>
-        document.getElementById('inputDataBtn').addEventListener('click', function() {
-          // Tampilkan popup untuk mengisi data
-          $('#inputDataModal').modal('show');
-        });
-
-        function addData() {
-          // Logika untuk mengambil data dari inputan popup dan menambahkannya ke dalam tabel
-          var jadwalTable = document.getElementById('Jadwal').querySelector('table tbody');
-
-          // Ambil data dari inputan popup
-          var newData = [
-            document.getElementById('inputAlamat').value,
-            document.getElementById('inputTanggal').value,
-            document.getElementById('inputIndikator').value,
-            document.getElementById('inputKapasitas').value,
-            document.getElementById('inputKoordinat').value
-          ];
-
-          // Buat elemen baris baru
-          var newRow = jadwalTable.insertRow();
-
-          // Isi data ke dalam baris
-          for (var i = 0; i < newData.length; i++) {
-            var cell = newRow.insertCell(i);
-            cell.innerHTML = newData[i];
-          }
-
-          // Sembunyikan popup setelah menambahkan data
-          $('#inputDataModal').modal('hide');
-        }
-      </script>
-      
-      <!-- resources/views/simpan_rute.blade.php -->
-      <script>
-    // function simpanDanTampilkan() {
-    //     $.ajax({
-    //         type: "POST",
-    //         url: "{{ route('simpan.dan.tampilkan') }}",
-    //         data: {_token: "{{ csrf_token() }}"},
-    //         success: function(response) {
-    //             alert(response); // Tampilkan respon dari controller (opsional)
-    //         }
-    //     });
-    // }
-     // Fungsi untuk mengambil data dari server
-     function getData() {
-        $.ajax({
-            type: "GET",
-            url: "{{ route('simpan.rute') }}", // Sesuaikan dengan rute yang benar
-            success: function(response) {
-                // Handle respons dari server
-                console.log(response);
-
-                // Tampilkan data di antarmuka pengguna (contoh: console.log atau tampilkan di tabel)
-            },
-            error: function(error) {
-                // Handle kesalahan (jika diperlukan)
-                console.log(error);
-            }
-        });
-    }
-
-    // Panggil fungsi getData pada saat dokumen dimuat
-    $(document).ready(function() {
-        getData();
-    });
-
-    // Fungsi untuk menutup modal
-    function closeModal() {
-        $("#inputDataModal").modal("hide");
-    }
-</script>
-
-      <!-- Popup Modal -->
-      <div class="modal fade" id="inputDataModal" tabindex="-1" role="dialog" aria-labelledby="inputDataModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="inputDataModalLabel">Input Data</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <!-- Form untuk mengisi data -->
-              <form action="{{ url('/simpan-jadwal') }}" method="post">
-                @csrf
-                <div class="form-group">
-                  <label for="inputAlamat">Alamat</label>
-                  <input type="text" class="form-control" id="inputAlamat" placeholder="Masukkan alamat" name="alamat" required>
-                </div>
-                <div class="form-group">
-                  <label for="inputTanggal">Tanggal</label>
-                  <input type="text" class="form-control" id="inputTanggal" placeholder="Masukkan tanggal" name="tanggal" required>
-                </div>
-                <div class="form-group">
-                  <label for="inputIndikator">Indikator Sampah</label>
-                  <input type="text" class="form-control" id="inputIndikator" placeholder="Masukkan indikator sampah" name="indikator" required>
-                </div>
-                <div class="form-group">
-                  <label for="inputKapasitas">Kapasitas</label>
-                  <input type="text" class="form-control" id="inputKapasitas" placeholder="Masukkan kapasitas" name="kapasitas" required>
-                </div>
-                <div class="form-group">
-                  <label for="inputKoordinat">Titik Koordinat</label>
-                  <input type="text" class="form-control" id="inputKoordinat" placeholder="Masukkan titik koordinat" name="koordinat" required>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" onclick="closeModal()">Tutup</button>
-                  <button type="button" class="btn btn-primary">Simpan</button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Skrip JavaScript untuk menangani aksi penutup modal -->
-      <script>
-        function closeModal() {
-          // Sembunyikan modal
-          $('#inputDataModal').modal('hide');
-
-          // Reset nilai formulir jika diperlukan
-          document.getElementById('inputAlamat').value = '';
-          document.getElementById('inputTanggal').value = '';
-          document.getElementById('inputIndikator').value = '';
-          document.getElementById('inputKapasitas').value = '';
-          document.getElementById('inputKoordinat').value = '';
-        }
-      </script>
-
-      <!-- Tambahkan script Bootstrap (pastikan untuk menyertakan file Bootstrap sebelumnya) -->
-      <script src="path/to/bootstrap.min.js"></script>
-
-      <!-- Tambahkan script JavaScript -->
-      <script>
-        // Memeriksa apakah ada data yang sudah disimpan di lokal penyimpanan
-        var savedData = JSON.parse(localStorage.getItem('savedData')) || [];
-
-        // Memulai dengan memuat data yang sudah ada
-        loadSavedData();
-
-        document.getElementById('inputDataBtn').addEventListener('click', function() {
-          // Tampilkan popup untuk mengisi data
-          $('#inputDataModal').modal('show');
-        });
-
-        function addData() {
-          // Logika untuk mengambil data dari inputan popup dan menambahkannya ke dalam tabel
-          var jadwalTable = document.getElementById('Jadwal').querySelector('table tbody');
-
-          // Ambil data dari inputan popup
-          var newData = [
-            document.getElementById('inputAlamat').value,
-            document.getElementById('inputTanggal').value,
-            document.getElementById('inputIndikator').value,
-            document.getElementById('inputKapasitas').value,
-            document.getElementById('inputKoordinat').value
-          ];
-
-          // Tambahkan data baru ke dalam array
-          savedData.push(newData);
-
-          // Simpan data ke lokal penyimpanan
-          localStorage.setItem('savedData', JSON.stringify(savedData));
-
-          // Tambahkan data ke dalam tabel
-          addDataToTable(newData);
-
-          // Sembunyikan popup setelah menambahkan data
-          $('#inputDataModal').modal('hide');
-
-          // Reset nilai formulir jika diperlukan
-          resetForm();
-        }
-
-        function loadSavedData() {
-          // Hapus semua baris yang ada di tabel sebelum memuat data
-          var jadwalTable = document.getElementById('Jadwal').querySelector('table tbody');
-          jadwalTable.innerHTML = '';
-
-          // Tampilkan data yang masih ada di lokal penyimpanan
-          for (var i = 0; i < savedData.length; i++) {
-            if (!isRowDeleted(savedData[i])) {
-              addDataToTable(savedData[i]);
-            }
-          }
-        }
-
-        function isRowDeleted(data) {
-          // Periksa apakah data dengan ID yang sama sudah dihapus
-          var jadwalTable = document.getElementById('Jadwal').querySelector('table tbody');
-          for (var i = 0; i < jadwalTable.rows.length; i++) {
-            var row = jadwalTable.rows[i];
-            if (row.dataset.id === generateIdFromData(data)) {
-              return false; // Baris masih ada di tabel, belum dihapus
-            }
-          }
-          return true; // Baris sudah dihapus
-        }
-
-        function generateIdFromData(data) {
-          // Buat ID dari data (sesuaikan dengan cara Anda menyimpan ID)
-          return data.join('_'); // Contoh, menggabungkan semua nilai sebagai ID
-        }
-
-        function addDataToTable(data) {
-          // Tambahkan data ke dalam tabel
-          var jadwalTable = document.getElementById('Jadwal').querySelector('table tbody');
-          var newRow = jadwalTable.insertRow();
-
-          for (var i = 0; i < data.length; i++) {
-            var cell = newRow.insertCell(i);
-            cell.innerHTML = data[i];
-          }
-
-          // Tambahkan checkbox pada setiap baris
-          var checkboxCell = newRow.insertCell(data.length);
-          var checkbox = document.createElement('input');
-          checkbox.type = 'checkbox';
-          checkboxCell.appendChild(checkbox);
-          // Tambahkan data-id attribute ke setiap baris
-          newRow.dataset.id = generateUniqueId();
-        }
-
-        function resetForm() {
-          // Reset nilai formulir
-          document.getElementById('inputAlamat').value = '';
-          document.getElementById('inputTanggal').value = '';
-          document.getElementById('inputIndikator').value = '';
-          document.getElementById('inputKapasitas').value = '';
-          document.getElementById('inputKoordinat').value = '';
-        }
-
-        function deleteSelected() {
-          var jadwalTable = document.getElementById('Jadwal').querySelector('table tbody');
-          var selectedRows = [];
-
-          // Cari baris yang dipilih
-          for (var i = 0; i < jadwalTable.rows.length; i++) {
-            var row = jadwalTable.rows[i];
-
-            // Periksa apakah ada elemen checkbox pada baris
-            var checkbox = row.cells[row.cells.length - 1].querySelector('input[type="checkbox"]');
-            if (checkbox && checkbox.checked) {
-              selectedRows.push(row);
-            }
-          }
-
-          // Hapus baris yang dipilih dari penyimpanan lokal dan tabel
-          for (var i = selectedRows.length - 1; i >= 0; i--) {
-            var row = selectedRows[i];
-            var index = row.rowIndex - 1; // Mengurangkan satu karena baris header tidak dihitung
-
-            // Kirim permintaan Ajax ke server untuk menghapus data
-            var id = row.dataset.id; // Sesuaikan dengan cara Anda menyimpan ID
-            deleteDataOnServer(id); // Panggil fungsi untuk menghapus data di server
-
-            savedData.splice(index, 1);
-            localStorage.setItem('savedData', JSON.stringify(savedData));
-            jadwalTable.deleteRow(index);
-          }
-        }
-        // Fungsi untuk menghapus data pada server
-        function deleteDataOnServer(id) {
-          $.ajax({
-            type: 'POST',
-            url: '/delete-endpoint',
-            data: {
-              id: id
-            },
-            success: function(response) {
-              // Handle respons dari server
-              console.log(response);
-            },
-            error: function(error) {
-              console.error('Error:', error);
-            }
-          });
-          // Tambahkan CSRF token ke setiap permintaan Ajax
-          $.ajaxSetup({
-            headers: {
-              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-          });
-        }
-      </script>
-
-      <!-- Popup Modal -->
-      <div class="modal fade" id="inputDataModal" tabindex="-1" role="dialog" aria-labelledby="inputDataModalLabel" aria-hidden="true">
-        <!-- ... (sesuaikan dengan bagian sebelumnya) ... -->
-      </div>
-
-      <!-- Skrip JavaScript untuk menangani aksi penutup modal -->
-      <script>
-        function closeModal() {
-          // Sembunyikan modal
-          $('#inputDataModal').modal('hide');
-
-          // Reset nilai formulir jika diperlukan
-          resetForm();
-        }
-      </script>
-
-      <!-- Control Sidebar -->
-      <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-      </aside>
-      <!-- ./wrapper -->
     </div>
+    <!-- Map Peta -->
+    <div id="map">
+
+      <!-- Legenda -->
+      <div class="legend legend-item-kiri">
+        <div class="legend-item">
+          <img src="https://img.icons8.com/plasticine/100/filled-trash.png" height="20" width="20"></img>
+          Kapasitas 100 L
+        </div>
+      </div>
+      <div class="legend legend-item-kanan">
+        <div class="legend-item">
+          <i class="fas fa-circle nav-icon mr-2 text-danger"></i>
+          Penuh
+        </div>
+        <div class="legend-item">
+          <i class="fas fa-circle nav-icon mr-2 text-warning"></i>
+          Setengah
+        </div>
+        <div class="legend-item">
+          <i class="fas fa-circle nav-icon mr-2 text-success"></i>
+          Kosong
+        </div>
+      </div>
+
+      <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+      <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+      <script>
+        var map = L.map('map').setView([-6.244528, 106.832361], 16);
+        var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        });
+        osm.addTo(map);
+
+        var redMarkerIcon = L.icon({
+          iconUrl: 'https://img.icons8.com/plasticine/100/filled-trash.png',
+          shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+          iconSize: [25, 41],
+          iconAnchor: [12, 41],
+          popupAnchor: [1, -34],
+          shadowSize: [41, 41]
+        });
+
+        var coordinates = [
+          [-6.244528, 106.832361],
+          [-6.245111, 106.832306],
+          [-6.245233, 106.831592],
+          [-6.245192, 106.831250],
+          [-6.245311, 106.830833],
+          [-6.245233, 106.830694],
+          [-6.244889, 106.830750],
+          [-6.244500, 106.830917],
+          [-6.244417, 106.830917],
+          [-6.244306, 106.830944],
+          [-6.244306, 106.830833],
+          [-6.243806, 106.830750],
+          [-6.243750, 106.830806],
+          [-6.243667, 106.830750],
+          [-6.243389, 106.830694],
+          [-6.243333, 106.830750],
+          [-6.243194, 106.830694],
+          [-6.242972, 106.830583],
+          [-6.242972, 106.830750],
+          [-6.242972, 106.830917],
+          [-6.242972, 106.831639],
+          [-6.242972, 106.831694],
+          [-6.242972, 106.831889],
+          [-6.242972, 106.832194],
+          [-6.242972, 106.832528],
+          [-6.242972, 106.882333],
+          [-6.242972, 106.882778],
+          [-6.242972, 106.882639],
+          [-6.242972, 106.882917],
+          [-6.242972, 106.882222],
+          [-6.242972, 106.882667],
+          [-6.242972, 106.882250],
+          [-6.242972, 106.882222],
+          [-6.242972, 106.882361],
+          [-6.242972, 106.881917]
+        ];
+
+        var markers = [];
+        for (var i = 0; i < coordinates.length; i++) {
+          var marker = L.marker(coordinates[i], {
+            icon: redMarkerIcon
+          }).bindPopup('Titik ' + (i + 1));
+          marker.addTo(map);
+        }
+
+        var routingControl = L.Routing.control({
+          waypoints: [
+            L.latLng(-6.244528, 106.832361),
+            L.latLng(-6.245111, 106.832306),
+            L.latLng(-6.245233, 106.831592),
+            L.latLng(-6.245192, 106.831250),
+            L.latLng(-6.245311, 106.830833),
+            L.latLng(-6.245233, 106.830694),
+            L.latLng(-6.244889, 106.830750),
+            L.latLng(-6.244500, 106.830917),
+            L.latLng(-6.244417, 106.830917),
+            L.latLng(-6.244306, 106.830944),
+            L.latLng(-6.244306, 106.830833),
+            L.latLng(-6.243806, 106.830750),
+            L.latLng(-6.243750, 106.830806),
+            L.latLng(-6.243667, 106.830750),
+            L.latLng(-6.243389, 106.830694),
+            L.latLng(-6.243333, 106.830750),
+            L.latLng(-6.243194, 106.830694),
+            L.latLng(-6.242972, 106.830583),
+            L.latLng(-6.242972, 106.830750),
+            L.latLng(-6.242972, 106.830917),
+            L.latLng(-6.242972, 106.831639),
+            L.latLng(-6.242972, 106.831694),
+            L.latLng(-6.242972, 106.831889),
+            L.latLng(-6.242972, 106.832194),
+            L.latLng(-6.242972, 106.832528),
+            L.latLng(-6.242972, 106.882333),
+            L.latLng(-6.242972, 106.882778),
+            L.latLng(-6.242972, 106.882639),
+            L.latLng(-6.242972, 106.882917),
+            L.latLng(-6.242972, 106.882222),
+            L.latLng(-6.242972, 106.882667),
+            L.latLng(-6.242972, 106.882250),
+            L.latLng(-6.242972, 106.882222),
+            L.latLng(-6.242972, 106.882361),
+            L.latLng(-6.242972, 106.881917)
+          ],
+          routeWhileDragging: true
+        }).addTo(map);
+
+        function calculateRoute() {
+          var startCoord = document.getElementById('startCoord').value.split(',').map(parseFloat);
+          var endCoord = document.getElementById('endCoord').value.split(',').map(parseFloat);
+          routingControl.setWaypoints([L.latLng(startCoord), L.latLng(endCoord)]);
+        }
+        var OpenStreetMap_BZH = L.tileLayer('https://tile.openstreetmap.bzh/br/{z}/{x}/{y}.png', {
+          maxZoom: 19,
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Tiles courtesy of <a href="http://www.openstreetmap.bzh/" target="_blank">Breton OpenStreetMap Team</a>',
+          bounds: [
+            [46.2, -5.5],
+            [50, 0.7]
+          ]
+        });
+        OpenStreetMap_BZH.addTo(map);
+
+        var googleStreets = L.tileLayer('http://{s}.google.com/vt?lyrs=m&x={x}&y={y}&z={z}', {
+          maxZoom: 20,
+          subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
+        });
+        googleStreets.addTo(map);
+
+        var googleSat = L.tileLayer('http://{s}.google.com/vt?lyrs=s&x={x}&y={y}&z={z}', {
+          maxZoom: 20,
+          subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
+        });
+        googleSat.addTo(map);
+
+        var baseLayers = {
+          "OpenStreetMap": osm,
+          "Satelite": googleSat,
+          "Google Map": googleStreets,
+        };
+
+        var overlays = {};
+        for (var i = 0; i < markers.length; i++) {
+          overlays['Titik ' + (i + 1)] = markers[i];
+        };
+
+        L.control.layers(baseLayers, overlays).addTo(map);
+      </script>
+    </div>
+
+    <!-- Menu Jadwal -->
+    <div id="Jadwal">
+      <div class="col-md-20 mt-3">
+        <div class="card">
+          <div class="card-header border-transparent">
+            <h3 class="card-title">Jadwal SmartBin</h3>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body p-0">
+            <div class="table-responsive">
+              <table class="table m-0">
+                <thead>
+                  <tr>
+                    <th>Alamat</th>
+                    <th>Tanggal</th>
+                    <th>Indikator Sampah</th>
+                    <th>Kapasitas</th>
+                    <th>Titik Kordinat</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+            <!-- /.table-responsive -->
+          </div>
+          <!-- /.card-body -->
+          <div class="card-footer clearfix">
+            <a href="javascript:void(0)" class="btn btn-sm btn-info float-left" id="inputDataBtn">Input Data</a>
+            <a href="javascript:void(0)" class="btn btn-sm btn-secondary float-right">Jadwal kendaraan</a>
+            <button type="button" class="btn btn-sm btn-danger float-right mr-2" onclick="deleteSelected()">Hapus</button>
+          </div>
+          <!-- /.card-footer -->
+        </div>
+      </div>
+    </div>
+    </section>
+
+    <!-- Tambahkan script Bootstrap dan jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Tambahkan script Bootstrap (pastikan untuk menyertakan file Bootstrap sebelumnya) -->
+    <script src="path/to/bootstrap.min.js"></script>
+
+    <!-- Tambahkan script JavaScript -->
+    <script>
+      document.getElementById('inputDataBtn').addEventListener('click', function() {
+        // Tampilkan popup untuk mengisi data
+        $('#inputDataModal').modal('show');
+      });
+
+      function addData() {
+        // Logika untuk mengambil data dari inputan popup dan menambahkannya ke dalam tabel
+        var jadwalTable = document.getElementById('Jadwal').querySelector('table tbody');
+
+        // Ambil data dari inputan popup
+        var newData = [
+          document.getElementById('inputAlamat').value,
+          document.getElementById('inputTanggal').value,
+          document.getElementById('inputIndikator').value,
+          document.getElementById('inputKapasitas').value,
+          document.getElementById('inputKoordinat').value
+        ];
+
+        // Buat elemen baris baru
+        var newRow = jadwalTable.insertRow();
+
+        // Isi data ke dalam baris
+        for (var i = 0; i < newData.length; i++) {
+          var cell = newRow.insertCell(i);
+          cell.innerHTML = newData[i];
+        }
+
+        // Sembunyikan popup setelah menambahkan data
+        $('#inputDataModal').modal('hide');
+      }
+    </script>
+
+    <!-- Popup Modal -->
+    <div class="modal fade" id="inputDataModal" tabindex="-1" role="dialog" aria-labelledby="inputDataModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="inputDataModalLabel">Input Data</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <!-- Form untuk mengisi data -->
+            <form action="{{ url('/simpan-jadwal') }}" method="post">
+              @csrf
+              <div class="form-group">
+                <label for="inputAlamat">Alamat</label>
+                <input type="text" class="form-control" id="inputAlamat" placeholder="Masukkan alamat" name="alamat" required>
+              </div>
+              <div class="form-group">
+                <label for="inputTanggal">Tanggal</label>
+                <input type="text" class="form-control" id="inputTanggal" placeholder="Masukkan tanggal" name="tanggal" required>
+              </div>
+              <div class="form-group">
+                <label for="inputIndikator">Indikator Sampah</label>
+                <input type="text" class="form-control" id="inputIndikator" placeholder="Masukkan indikator sampah" name="indikator" required>
+              </div>
+              <div class="form-group">
+                <label for="inputKapasitas">Kapasitas</label>
+                <input type="text" class="form-control" id="inputKapasitas" placeholder="Masukkan kapasitas" name="kapasitas" required>
+              </div>
+              <div class="form-group">
+                <label for="inputKoordinat">Titik Koordinat</label>
+                <input type="text" class="form-control" id="inputKoordinat" placeholder="Masukkan titik koordinat" name="koordinat" required>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeModal()">Tutup</button>
+                <button type="button" class="btn btn-primary">Simpan</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Skrip JavaScript untuk menangani aksi penutup modal -->
+    <script>
+      function closeModal() {
+        // Sembunyikan modal
+        $('#inputDataModal').modal('hide');
+
+        // Reset nilai formulir jika diperlukan
+        document.getElementById('inputAlamat').value = '';
+        document.getElementById('inputTanggal').value = '';
+        document.getElementById('inputIndikator').value = '';
+        document.getElementById('inputKapasitas').value = '';
+        document.getElementById('inputKoordinat').value = '';
+      }
+    </script>
+
+    <!-- Tambahkan script Bootstrap (pastikan untuk menyertakan file Bootstrap sebelumnya) -->
+    <script src="path/to/bootstrap.min.js"></script>
+
+    <!-- Tambahkan script JavaScript -->
+    <script>
+      // Memeriksa apakah ada data yang sudah disimpan di lokal penyimpanan
+      var savedData = JSON.parse(localStorage.getItem('savedData')) || [];
+
+      // Memulai dengan memuat data yang sudah ada
+      loadSavedData();
+
+      document.getElementById('inputDataBtn').addEventListener('click', function() {
+        // Tampilkan popup untuk mengisi data
+        $('#inputDataModal').modal('show');
+      });
+
+      function addData() {
+        // Logika untuk mengambil data dari inputan popup dan menambahkannya ke dalam tabel
+        var jadwalTable = document.getElementById('Jadwal').querySelector('table tbody');
+
+        // Ambil data dari inputan popup
+        var newData = [
+          document.getElementById('inputAlamat').value,
+          document.getElementById('inputTanggal').value,
+          document.getElementById('inputIndikator').value,
+          document.getElementById('inputKapasitas').value,
+          document.getElementById('inputKoordinat').value
+        ];
+
+        // Tambahkan data baru ke dalam array
+        savedData.push(newData);
+
+        // Simpan data ke lokal penyimpanan
+        localStorage.setItem('savedData', JSON.stringify(savedData));
+
+        // Tambahkan data ke dalam tabel
+        addDataToTable(newData);
+
+        // Sembunyikan popup setelah menambahkan data
+        $('#inputDataModal').modal('hide');
+
+        // Reset nilai formulir jika diperlukan
+        resetForm();
+      }
+
+      function loadSavedData() {
+        // Hapus semua baris yang ada di tabel sebelum memuat data
+        var jadwalTable = document.getElementById('Jadwal').querySelector('table tbody');
+        jadwalTable.innerHTML = '';
+
+        // Tampilkan data yang masih ada di lokal penyimpanan
+        for (var i = 0; i < savedData.length; i++) {
+          if (!isRowDeleted(savedData[i])) {
+            addDataToTable(savedData[i]);
+          }
+        }
+      }
+
+      function isRowDeleted(data) {
+        // Periksa apakah data dengan ID yang sama sudah dihapus
+        var jadwalTable = document.getElementById('Jadwal').querySelector('table tbody');
+        for (var i = 0; i < jadwalTable.rows.length; i++) {
+          var row = jadwalTable.rows[i];
+          if (row.dataset.id === generateIdFromData(data)) {
+            return false; // Baris masih ada di tabel, belum dihapus
+          }
+        }
+        return true; // Baris sudah dihapus
+      }
+
+      function generateIdFromData(data) {
+        // Buat ID dari data (sesuaikan dengan cara Anda menyimpan ID)
+        return data.join('_'); // Contoh, menggabungkan semua nilai sebagai ID
+      }
+
+      function addDataToTable(data) {
+        // Tambahkan data ke dalam tabel
+        var jadwalTable = document.getElementById('Jadwal').querySelector('table tbody');
+        var newRow = jadwalTable.insertRow();
+
+        for (var i = 0; i < data.length; i++) {
+          var cell = newRow.insertCell(i);
+          cell.innerHTML = data[i];
+        }
+
+        // Tambahkan checkbox pada setiap baris
+        var checkboxCell = newRow.insertCell(data.length);
+        var checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkboxCell.appendChild(checkbox);
+        // Tambahkan data-id attribute ke setiap baris
+        newRow.dataset.id = generateUniqueId();
+      }
+
+      function resetForm() {
+        // Reset nilai formulir
+        document.getElementById('inputAlamat').value = '';
+        document.getElementById('inputTanggal').value = '';
+        document.getElementById('inputIndikator').value = '';
+        document.getElementById('inputKapasitas').value = '';
+        document.getElementById('inputKoordinat').value = '';
+      }
+
+      function deleteSelected() {
+        var jadwalTable = document.getElementById('Jadwal').querySelector('table tbody');
+        var selectedRows = [];
+
+        // Cari baris yang dipilih
+        for (var i = 0; i < jadwalTable.rows.length; i++) {
+          var row = jadwalTable.rows[i];
+
+          // Periksa apakah ada elemen checkbox pada baris
+          var checkbox = row.cells[row.cells.length - 1].querySelector('input[type="checkbox"]');
+          if (checkbox && checkbox.checked) {
+            selectedRows.push(row);
+          }
+        }
+
+        // Hapus baris yang dipilih dari penyimpanan lokal dan tabel
+        for (var i = selectedRows.length - 1; i >= 0; i--) {
+          var row = selectedRows[i];
+          var index = row.rowIndex - 1; // Mengurangkan satu karena baris header tidak dihitung
+
+          // Kirim permintaan Ajax ke server untuk menghapus data
+          var id = row.dataset.id; // Sesuaikan dengan cara Anda menyimpan ID
+          deleteDataOnServer(id); // Panggil fungsi untuk menghapus data di server
+
+          savedData.splice(index, 1);
+          localStorage.setItem('savedData', JSON.stringify(savedData));
+          jadwalTable.deleteRow(index);
+        }
+      }
+      // Fungsi untuk menghapus data pada server
+      function deleteDataOnServer(id) {
+        $.ajax({
+          type: 'POST',
+          url: '/delete-endpoint',
+          data: {
+            id: id
+          },
+          success: function(response) {
+            // Handle respons dari server
+            console.log(response);
+          },
+          error: function(error) {
+            console.error('Error:', error);
+          }
+        });
+        // Tambahkan CSRF token ke setiap permintaan Ajax
+        $.ajaxSetup({
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+        });
+      }
+    </script>
+
+    <!-- Popup Modal -->
+    <div class="modal fade" id="inputDataModal" tabindex="-1" role="dialog" aria-labelledby="inputDataModalLabel" aria-hidden="true">
+      <!-- ... (sesuaikan dengan bagian sebelumnya) ... -->
+    </div>
+
+    <!-- Skrip JavaScript untuk menangani aksi penutup modal -->
+    <script>
+      function closeModal() {
+        // Sembunyikan modal
+        $('#inputDataModal').modal('hide');
+
+        // Reset nilai formulir jika diperlukan
+        resetForm();
+      }
+    </script>
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+      <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- ./wrapper -->
+  </div>
   </div>
   <!-- REQUIRED SCRIPTS -->
   <!-- jQuery -->

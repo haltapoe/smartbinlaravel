@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB as FacadesDB;
 use Illuminate\Support\Facedes\DB;
 
 class Rute extends Model
@@ -12,6 +13,6 @@ class Rute extends Model
 
     public static function getRute()
     {
-        return DB::connection('pgsql')->table('smartbin')->select('lat', 'long', 'kilometer')->get();
+        return FacadesDB::connection('pgsql')->table('smartbin')->select('lat', 'long', 'kilometer')->get();
     }
 }

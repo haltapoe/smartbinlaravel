@@ -17,8 +17,10 @@ class SavedDataController extends Controller
             SavedData::where('id', $selectedRow['id'])->delete();
         }
 
-        return response()->json(['status' => 'success', 'message' => 'Data deleted successfully']);
-    }
+        // Perbarui data yang akan ditampilkan
+        $savedDataList = SavedData::all();
 
-    // Metode lain yang mungkin diperlukan
+        // Kembalikan tampilan dengan data yang diperbarui
+        return view('nama_tampilan', compact('savedDataList'))->with('status', 'success')->with('message', 'Data deleted successfully');
+    }
 }

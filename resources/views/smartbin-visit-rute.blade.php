@@ -98,13 +98,13 @@
                   </a>
                   <ul class="nav nav-treeview">
                     <li class="nav-item ml-4">
-                      <a href="#map" class="nav-link">
+                      <a href="{{ route('get-rute') }}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Nama Rute</p>
                       </a>
                     </li>
                     <li class="nav-item ml-4">
-                      <a href="#" class="nav-link">
+                      <a href="{{ route('smartbin-visit-rute') }}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Smartbin Visit</p>
                       </a>
@@ -149,8 +149,8 @@
           }
 
           .form-control-sidebar {
-  max-width: 200px;
-}
+            max-width: 200px;
+          }
 
           .highlighted {
             background-color: rgba(255, 255, 255, 0.725);
@@ -212,10 +212,10 @@
               <input type="text" class="form-control form-control-sidebar" id="startCoord" name="startCoord" placeholder="Lat, Long">
               <span class="input-group-text">Titik Tujuan</span>
               <input type="text" class="form-control form-control-sidebar" id="endCoord" name="endCoord" placeholder="Lat, Long">
-              <button type="button" class="btn btn-outline-secondary" onclick="calculateRoute()"><i class="fas fa-fw fa-search"></i></button>        
-            </form>
+              <button type="button" class="btn btn-outline-secondary" onclick="calculateRoute()"><i class="fas fa-fw fa-search"></i></button>
+          </form>
         </div>
-        </div>
+    </div>
 
     <!-- Map Peta -->
     <div id="map">
@@ -251,10 +251,9 @@
         });
         osm.addTo(map);
 
-        var redMarkerIcon = L.icon({
-          iconUrl: 'https://github.com/haltapoe/smartbinlaravel.git/public/Truck.png',
-          shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
-          iconSize: [25, 41],
+        var TruckMarkerIcon = L.icon({
+          iconUrl: 'https://raw.githubusercontent.com/haltapoe/smartbinlaravel/34e152440a1c9f7877aecc0e193527bc0ff50c09/public/Truck.png',
+          iconSize: [41, 41],
           iconAnchor: [12, 41],
           popupAnchor: [1, -34],
           shadowSize: [41, 41]
@@ -301,56 +300,20 @@
         var markers = [];
         for (var i = 0; i < coordinates.length; i++) {
           var marker = L.marker(coordinates[i], {
-            icon: redMarkerIcon
+            icon: TruckMarkerIcon
           }).bindPopup('Titik ' + (i + 1));
           marker.addTo(map);
         }
 
         var routingControl = L.Routing.control({
-          waypoints: [
-            L.latLng(-6.244528, 106.832361),
-            L.latLng(-6.245111, 106.832306),
-            L.latLng(-6.245233, 106.831592),
-            L.latLng(-6.245192, 106.831250),
-            L.latLng(-6.245311, 106.830833),
-            L.latLng(-6.245233, 106.830694),
-            L.latLng(-6.244889, 106.830750),
-            L.latLng(-6.244500, 106.830917),
-            L.latLng(-6.244417, 106.830917),
-            L.latLng(-6.244306, 106.830944),
-            L.latLng(-6.244306, 106.830833),
-            L.latLng(-6.243806, 106.830750),
-            L.latLng(-6.243750, 106.830806),
-            L.latLng(-6.243667, 106.830750),
-            L.latLng(-6.243389, 106.830694),
-            L.latLng(-6.243333, 106.830750),
-            L.latLng(-6.243194, 106.830694),
-            L.latLng(-6.242972, 106.830583),
-            L.latLng(-6.242972, 106.830750),
-            L.latLng(-6.242972, 106.830917),
-            L.latLng(-6.242972, 106.831639),
-            L.latLng(-6.242972, 106.831694),
-            L.latLng(-6.242972, 106.831889),
-            L.latLng(-6.242972, 106.832194),
-            L.latLng(-6.242972, 106.832528),
-            L.latLng(-6.242972, 106.882333),
-            L.latLng(-6.242972, 106.882778),
-            L.latLng(-6.242972, 106.882639),
-            L.latLng(-6.242972, 106.882917),
-            L.latLng(-6.242972, 106.882222),
-            L.latLng(-6.242972, 106.882667),
-            L.latLng(-6.242972, 106.882250),
-            L.latLng(-6.242972, 106.882222),
-            L.latLng(-6.242972, 106.882361),
-            L.latLng(-6.242972, 106.881917)
-          ],
-          routeWhileDragging: true
+          waypoints: [],
         }).addTo(map);
 
         function calculateRoute() {
           var startCoord = document.getElementById('startCoord').value.split(',').map(parseFloat);
           var endCoord = document.getElementById('endCoord').value.split(',').map(parseFloat);
           routingControl.setWaypoints([L.latLng(startCoord), L.latLng(endCoord)]);
+          routingControl.route();
         }
         var OpenStreetMap_BZH = L.tileLayer('https://tile.openstreetmap.bzh/br/{z}/{x}/{y}.png', {
           maxZoom: 19,
@@ -725,7 +688,7 @@
           <div class="card-footer clearfix">
             <a href="javascript:void(0)" class="btn btn-sm btn-info float-left" id="inputDataBtn">Input Data</a>
             <a href="javascript:void(0)" class="btn btn-sm btn-secondary float-right">Jadwal kendaraan</a>
-            <button type="button" class="btn btn-sm btn-danger float-right mr-2" onclick="deleteSelected()">Hapus</button>
+            <button type="button" class="btn btn-sm btn-danger float-right mr-2" onclick="deleteSelected(), deleteDataOnServer(id, index)">Hapus</button>
           </div>
           <!-- /.card-footer -->
         </div>
@@ -768,8 +731,32 @@
           cell.innerHTML = newData[i];
         }
 
+        // Simpan data ke localStorage
+        var storedData = JSON.parse(localStorage.getItem('jadwalData')) || [];
+        storedData.push(newData);
+        localStorage.setItem('jadwalData', JSON.stringify(storedData));
+
         // Sembunyikan popup setelah menambahkan data
         $('#inputDataModal').modal('hide');
+
+        // Fungsi untuk memuat data dari localStorage saat halaman dimuat
+        function loadData() {
+          var jadwalTable = document.getElementById('Jadwal').querySelector('table tbody');
+          var storedData = JSON.parse(localStorage.getItem('jadwalData')) || [];
+
+          storedData.forEach(function(data) {
+            var newRow = jadwalTable.insertRow();
+            for (var i = 0; i < data.length; i++) {
+              var cell = newRow.insertCell(i);
+              cell.innerHTML = data[i];
+            }
+          });
+        }
+
+        // Panggil loadData() saat halaman dimuat
+        window.addEventListener('load', function() {
+          loadData();
+        });
       }
     </script>
 
@@ -785,32 +772,33 @@
           </div>
           <div class="modal-body">
             <!-- Form untuk mengisi data -->
-            <form>
+            <<form action="{{ route('data.store') }}" method="POST">
+            @csrf
               <div class="form-group">
                 <label for="inputAlamat">Alamat</label>
-                <input type="text" class="form-control" id="inputAlamat" placeholder="Masukkan alamat">
+                <input type="text" class="form-control" id="inputAlamat" placeholder="Masukkan alamat" required>
               </div>
               <div class="form-group">
                 <label for="inputTanggal">Tanggal</label>
-                <input type="text" class="form-control" id="inputTanggal" placeholder="Masukkan tanggal">
+                <input type="text" class="form-control" id="inputTanggal" placeholder="Masukkan tanggal" required>
               </div>
               <div class="form-group">
                 <label for="inputIndikator">Indikator Sampah</label>
-                <input type="text" class="form-control" id="inputIndikator" placeholder="Masukkan indikator sampah">
+                <input type="text" class="form-control" id="inputIndikator" placeholder="Masukkan indikator sampah" required>
               </div>
               <div class="form-group">
                 <label for="inputKapasitas">Kapasitas</label>
-                <input type="text" class="form-control" id="inputKapasitas" placeholder="Masukkan kapasitas">
+                <input type="text" class="form-control" id="inputKapasitas" placeholder="Masukkan kapasitas" required>
               </div>
               <div class="form-group">
                 <label for="inputKoordinat">Titik Koordinat</label>
-                <input type="text" class="form-control" id="inputKoordinat" placeholder="Masukkan titik koordinat">
+                <input type="text" class="form-control" id="inputKoordinat" placeholder="Masukkan titik koordinat" required>
               </div>
             </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" onclick="closeModal()">Tutup</button>
-            <button type="button" class="btn btn-primary" onclick="addData()">Simpan</button>
+            <button type="button" class="btn btn-primary" onclick="addData(), loadData()">Simpan</button>
           </div>
         </div>
       </div>
@@ -830,7 +818,24 @@
         document.getElementById('inputKoordinat').value = '';
       }
     </script>
-
+    
+    @foreach ($savedDataList as $data)
+                    <tr>
+                        <td>{{ $data->alamat }}</td>
+                        <td>{{ $data->tanggal }}</td>
+                        <td>{{ $data->indikator_sampah }}</td>
+                        <td>{{ $data->kapasitas }}</td>
+                        <td>{{ $data->titik_koordinator }}</td>
+                        <td>
+                            <!-- Tautan atau formulir untuk menghapus data -->
+                            <form action="{{ route('data.destroy', $data->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit">Hapus</button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
     <!-- Tambahkan script Bootstrap (pastikan untuk menyertakan file Bootstrap sebelumnya) -->
     <script src="path/to/bootstrap.min.js"></script>
 
@@ -931,15 +936,11 @@
 
           // Kirim permintaan Ajax ke server untuk menghapus data
           var id = row.dataset.id; // Sesuaikan dengan cara Anda menyimpan ID
-          deleteDataOnServer(id); // Panggil fungsi untuk menghapus data di server
-
-          savedData.splice(index, 1);
-          localStorage.setItem('savedData', JSON.stringify(savedData));
-          jadwalTable.deleteRow(index);
+          deleteDataOnServer(id, index); // Panggil fungsi untuk menghapus data di server
         }
       }
       // Fungsi untuk menghapus data pada server
-      function deleteDataOnServer(id) {
+      function deleteDataOnServer(id, index) {
         $.ajax({
           type: 'POST',
           url: '/delete-endpoint',
@@ -949,6 +950,9 @@
           success: function(response) {
             // Handle respons dari server
             console.log(response);
+            savedData.splice(index, 1);
+            localStorage.setItem('savedData', JSON.stringify(savedData));
+            jadwalTable.deleteRow(index);
           },
           error: function(error) {
             console.error('Error:', error);

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB as FacadesDB;
 use Illuminate\Support\Facedes\DB;
 
 class Lokasi extends Model
@@ -13,6 +14,6 @@ class Lokasi extends Model
         public static function getLokasi()
         {
             //ambil data dari db
-            return DB::connection('pgsql')->('smartbin')->select('lat', 'long')->get();
+            return FacadesDB::connection('pgsql')->table('smartbin')->select('lat', 'long')->get();
         }
 }
